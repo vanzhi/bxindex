@@ -1,26 +1,35 @@
-const HtmlWebpckPlugin = require('html-webpack-plugin');
-const webpack = require('webpack')
-
 module.exports = {
-    devtool         : 'eval-source-map',
-    entry           :  __dirname + "/template/main.js", //已多次提及的唯一入口文件
-    output          : {
-        path        : __dirname + "/dist",              //打包后的文件存放的地方
-        filename    : "bundle.js"                       //打包后输出文件的文件名
+    devtool     : 'eval-source-map',
+    entry       : __dirname + '/app/main.js',
+    output      : {
+        path    : __dirname + '/public',
+        filename: 'bundle.js'
     },
-
-    devServer               : {
-    contentBase             : "./template/html",        //本地服务器所加载的页面所在的目录
-        historyApiFallback  : true,                     //不跳转
-        hot                 : true,
+    devServer   : {
+        contentBase         : './public',
+        port                : '8888',
         inline              : true,
-        port                : 8888
+        historyApiFallback  : true
     },
-
-    plugins         : [
-        new HtmlWebpckPlugin({
-            template : './template/html/index.html'
-        }), 
-        new webpack.HotModuleReplacementPlugin()
-    ]
+    module: {
+        rules: [{
+            test: /\.js$/,
+            loader: 'babel-loader',
+            include: [__dirname + 'public']
+        },
+        {
+            test: /\.(png|jpe?g|gif)(\?.*)?$/,
+            loader: 'url-loader',
+            options: {
+                limit: 10000
+            }
+        },
+        {
+            test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
+            loader: 'url-loader',
+            options: {
+                limit: 10000
+            }
+        }]
+    }
 }
