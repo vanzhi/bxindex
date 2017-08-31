@@ -1,3 +1,7 @@
 //main.js 
-const greeter = require('./Greeter.js');
-document.querySelector("#root").appendChild(greeter());
+require("./chunk1");
+require("./chunk2");
+import 'vue'
+
+// const greeter = require('./Greeter.js');
+// document.querySelector("#root").appendChild(greeter());
