@@ -210,16 +210,35 @@ export default {
     .img-list {
         .whole {
             width: 100%;
-            padding: 25%;
+            padding: 25% 0;
             .item {
                 width: 50%;
-                padding: 25%;
+                padding: 25% 0;
                 h5 {
                     font-size: 1.92rem;
                     text-align: left;
                 }
                 p {
                     font-size: 1.2rem;
+                }
+                .info {
+                    &:hover {
+                        color: inherit;
+                        transform: none;
+                    }
+                    &:active {
+                        color: $blue;
+                        transform-origin: 50% 50%;
+                        transform: scale(0.9, 0.9);
+                    }
+                }
+                img {
+                    &:hover {
+                        transform: none;
+                    }
+                    &:active {
+                        transform: scale(1.1);
+                    }
                 }
             }
             &:nth-child(odd) {

@@ -24,25 +24,26 @@ export default {
 @import '../style/base/index.scss';
 .title-view {
     margin: 40px 0;
-}
-h2 {
-    color: $blue;
-    font-size: 3.6rem;
-    font-weight: normal;
-    margin-bottom: 20px;
-    &.eng {
-        font-size: 1.4rem;
+    h2 {
+        color: $blue;
+        font-size: 3.6rem;
+        font-weight: normal;
+        margin-bottom: 20px;
+        &.eng {
+            font-size: 1.4rem;
+        }
     }
 }
+
 @media only screen and (max-width: 768px) {
     .title-view {
         margin: 30px 0;
-    }
-    h2 {
-        font-size: 1.68rem;
-        margin-bottom: 8px;
-        &.eng {
-            font-size: 1.2rem;
+        h2 {
+            font-size: 1.68rem;
+            margin-bottom: 8px;
+            &.eng {
+                font-size: 1.2rem;
+            }
         }
     }
     .short-line {
@@ -63,12 +64,12 @@ h2 {
 @media only screen and (min-width: 1200px) {
     .title-view {
         margin: 80px 0;
-    }
-    h2 {
-        font-size: 4.8rem;
-        margin-bottom: 30px;
-        &.eng {
-            font-size: 2.4rem;
+        h2 {
+            font-size: 4.8rem;
+            margin-bottom: 30px;
+            &.eng {
+                font-size: 2.4rem;
+            }
         }
     }
 }

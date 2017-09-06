@@ -2,34 +2,36 @@
 <div class="fn-clear">
     <section class="section-wrap-2">
         <c-title title="最新资讯" engTitle="News"></c-title>
-        <ul class="info-list">
-            <li class="item" v-for="i in 5" :key="i">
-                <div class="whole fn-clear">
-                    <div class="part left">
-                        <img :src="news1">
-                    </div>
-                    <div class="part right">
-                        <div>
-                            <span class="label-primary">公司新闻</span>
-                            <p>
-                                宝信软件成功签约龙山县智慧农业项目
-                            </p>
-                            <span class="time">
-                                2017.05.10
-                            </span>
+        <div class="list-wrap">
+            <ul class="info-list">
+                <li class="item" v-for="i in 5" :key="i">
+                    <div class="whole fn-clear">
+                        <div class="part left">
+                            <img :src="news1">
+                        </div>
+                        <div class="part right">
+                            <div>
+                                <span class="label-primary">公司新闻</span>
+                                <p>
+                                    宝信软件成功签约龙山县智慧农业项目
+                                </p>
+                                <span class="time">
+                                    2017.05.10
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-            <li class="last">
-                <div class="content">
-                    <p>
-                        READ MORE
-                    </p>
-                    <span class="arrow"><i class="iconfont icon-jiantou"></i></span>
-                </div>
-            </li>
-        </ul>
+                </li>
+                <li class="last">
+                    <div class="content">
+                        <p>
+                            READ MORE
+                        </p>
+                        <span class="arrow"><i class="iconfont icon-jiantou"></i></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </section>
 </div>
 </template>
@@ -83,6 +85,7 @@ export default {
         background: $white;
         vertical-align: middle;
         cursor: pointer;
+        transition: all 0.3s;
         &:hover {
             color: $white;
             background: $blue;
@@ -143,6 +146,14 @@ export default {
     color: $blue;
 }
 @media only screen and (max-width: 768px) {
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    .list-wrap {
+        margin-top: -10px;
+        padding-top: 10px;
+        overflow-y: scroll;
+    }
     .info-list {
         margin-left: -15px;
         margin-right: -15px;
@@ -151,9 +162,32 @@ export default {
         align-items: center;
         .item, .last {
             width: calc(50% - 30px);
+            min-width: 350px;
             margin-top: 0;
             margin-left: 15px;
             margin-right: 15px;
+        }
+        .last {
+            .content {
+                padding: 20.5% 0;
+            }
+        }
+        .part {
+            padding: 20.5% 0;
+        }
+        .item .whole:hover {
+            transform: none;
+        }
+        .item .whole:active {
+            transform: translate(-8px, -8px);
+        }
+        .last:hover {
+            color: inherit;
+            background: $white;
+        }
+        .last:active {
+            color: $white;
+            background: $blue;
         }
         .part.right {
             font-size: 1.2rem;

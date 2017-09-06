@@ -3,10 +3,27 @@
         <section class="section-wrap-2">
             <c-title title="视频介绍" engTitle="Video"></c-title>
             <div class="video-wrap">
-                <video :src="videoUrl"></video>
-                <div class="vide-mask">
-                    <img :src="img">
-                </div>
+                <video :src="videoUrl" id="videoPlayer" src="http://tv.baosteel.com:80/vnews/movie/st2017wn.mp4" loop controls></video>
+                <!-- <div class="video-controls">
+                    <transition name="fade">
+                        <div class="center-control" v-show="player && player.paused">
+                            <a @click="play"><i class="iconfont icon-bofang2"></i></a>
+                        </div>
+                    </transition>
+                    <div class="bottom-control">
+                        
+                    </div>
+                </div> -->
+                <transition name="fade">
+                    <span v-show="!videoVisible">
+                        <div class="video-img">
+                            <img :src="img">
+                        </div>
+                        <div class="video-mask">
+                            <a @click="play"><i class="iconfont icon-bofang"></i></a>
+                        </div>
+                    </span>
+                </transition>
             </div>
         </section>
         <div class="video-bottom">
@@ -21,8 +38,33 @@ export default {
     data() {
         return {
             videoUrl: '',
+            videoVisible: false,
+            player: null,
             img
         }
+    },
+    methods: {
+        play() {
+            if (!this.player) {
+                this.player = this.$el.querySelector('#videoPlayer');
+            }
+            this.player.play();
+            this.videoVisible = true;
+        },
+        pause() {
+            this.player.pause();
+        }
+    },
+    watch: {
+        'player.readyState' : function(value) {
+            console.log(value)
+        },
+        'player.paused' : function(value) {
+            
+        }
+    },
+    mounted() {
+        this.player = this.$el.querySelector('#videoPlayer');
     },
     components: {
         cTitle
@@ -33,23 +75,48 @@ export default {
 @import '../style/base/param';
 .video-wrap {
     position: relative;
-    margin: 0 90px;
+    margin: 0 auto;
+    width: 80%;
+    padding: 23.3% 0;
     video {
+        position: absolute;
         display: block;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         margin: 0 auto;
     }
-    .vide-mask {
+    .video-mask {
         position: absolute;
         top: 0;
         left: 0;
         display: block;
         height: 100%;
         width: 100%;
-        overflow: hidden;  
+        overflow: hidden; 
+        background: rgba(30, 30, 30, 0.6); 
+        text-align: center;
+        a {
+            display: inline-block;
+            position: relative;
+            top: 50%;
+            margin-top: -3.4rem;
+        }
+        .iconfont {
+            font-size: 6.8rem;
+            color: $white;
+        }
+    }
+    .video-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
         img {
-            width: 100%;
+            width: 120%;
         }
     }
 }
@@ -85,5 +152,11 @@ export default {
         height: 240px;
         margin-top: -120px;
     }
+}
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+    opacity: 0
 }
 </style>

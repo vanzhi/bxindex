@@ -42,6 +42,32 @@
     border-radius: 12px;
     display: inline-block;
 }
+.video-wrap {
+    position: relative;
+    .video-controls {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        .center-control {
+            position: relative;
+            text-align: center;
+            top: 50%;
+            margin-top: -3.4rem;
+            a {
+                display: inline-block;
+            }
+            .iconfont {
+                font-size: 6.8rem;
+                color: $white;
+            }
+        }
+        .bottom-control {
+
+        }
+    }
+}
 .bg-blue {
     background: $blue;
 }

@@ -1,6 +1,6 @@
 @import './param';
-html {font-size: 62.5%;line-height: 1.2;letter-spacing: 0.5px;}
-body {font-size: 1.4rem; color: #666;}
+html {font-size: 62.5%;line-height: 1.2;letter-spacing: 0.5px;background: $bgcolor;}
+body {font-size: 1.4rem; color: #666;background: $bgcolor;}
 body {font-family: "PingFangSC-Regular", "PingFang SC", "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;}
 body {box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;}
 body {background-color: $bgcolor;letter-spacing:0;}
