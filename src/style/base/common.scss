@@ -1,0 +1,99 @@
+@import './param';
+.flex-middle {
+    display: flex;
+    display: -webkit-flex;
+    display: -o-flex;
+    display: -ms-flex;
+    display: -moz-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+.dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 0 6px;
+    cursor: pointer;
+    &.active {
+        background: #E8B270;
+    }
+}
+.short-line {
+    display: block;
+    width: 60px;
+    border-top: 2px solid $blue;
+    box-sizing: initial;
+}
+.section-wrap {
+    margin-left: $smallblank;
+}
+.section-wrap-2 {
+    margin: 0 $smallblank;
+}
+.label-primary {
+    padding: 5px 15px;
+    background: $blue;
+    color: $white;
+    font-family: $fontlight;
+    border-radius: 12px;
+    display: inline-block;
+}
+.bg-blue {
+    background: $blue;
+}
+.bg-grey {
+    background: $grey;
+}
+.bg-brown {
+    background: $brown;
+}
+.bg-green {
+    background: $green;
+}
+.bg-purple {
+    background: $purple;
+}
+@media only screen and (max-width: 768px) {
+    .section-wrap {
+        margin-left: $miniblank;
+    }
+    .section-wrap-2 {
+        margin: 0 $miniblank;
+    }
+    .label-primary {
+        padding: 3px 8px;
+        font-size: 1.2rem;
+    }
+}
+@media only screen and (min-width: 768px) {
+
+}
+@media only screen and (min-width: 992px) {
+
+}
+@media only screen and (min-width: 1200px) {
+    .section-wrap {
+        margin-left: $baseblank;
+    }
+    .section-wrap-2 {
+        margin: 0 $baseblank;
+    }
+}
+
+
+// @media only screen and (max-width: 768px) {
+
+// }
+// @media only screen and (min-width: 768px) {
+
+// }
+// @media only screen and (min-width: 992px) {
+
+// }
+// @media only screen and (min-width: 1200px) {
+
+// }
