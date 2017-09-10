@@ -3,7 +3,7 @@
         <section class="section-wrap-2">
             <c-title title="视频介绍" engTitle="Video"></c-title>
             <div class="video-wrap">
-                <video :src="videoUrl" id="videoPlayer" src="http://tv.baosteel.com:80/vnews/movie/st2017wn.mp4" loop controls></video>
+                <video :src="videoUrl" id="videoPlayer" src="http://tv.baosteel.com:80/vnews/movie/baosight2017.mp4" loop controls></video>
                 <!-- <div class="video-controls">
                     <transition name="fade">
                         <div class="center-control" v-show="player && player.paused">
@@ -33,7 +33,7 @@
 </template>
 <script>
 import cTitle from './cTitle'
-import img from '../assets/img2.jpg'
+import img from '../assets/videwrap.jpg'
 export default {
     data() {
         return {
@@ -77,7 +77,7 @@ export default {
     position: relative;
     margin: 0 auto;
     width: 80%;
-    padding: 23.3% 0;
+    padding: 22.5% 0;
     video {
         position: absolute;
         display: block;
@@ -86,6 +86,7 @@ export default {
         width: 100%;
         height: 100%;
         margin: 0 auto;
+        background: $dark;
     }
     .video-mask {
         position: absolute;
@@ -125,7 +126,7 @@ export default {
 }
 @media only screen and (max-width: 768px) {
     .video-wrap {
-        margin: 0 8%;
+        // margin: 0 8%;
     }
     .video-bottom {
         height: 100px;
@@ -146,7 +147,7 @@ export default {
 }
 @media only screen and (min-width: 1200px) {
     .video-wrap {
-        margin: 0 15%;
+        // margin: 0 15%;
     }
     .video-bottom {
         height: 240px;

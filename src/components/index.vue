@@ -90,6 +90,12 @@ export default {
     }
 }
 </script>
+<style>
+.back-top {
+    transform: translateZ(0)
+}
+</style>
+
 <style lang="scss" scoped>
 @import '../style/base/param';
 .main {

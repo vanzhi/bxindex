@@ -1,23 +1,27 @@
 <template>
     <div class="map-wrap">
         <div>
-            <el-amap vid="amap1" :zoom="zoom" :center="center">
+            <el-amap vid="amap1" :zoom="zoom" :center="center" :scrollWheel="false" :plugin="plugin" :amapManager="amapManager">
                 <el-amap-marker :position="marker.position"></el-amap-marker>
             </el-amap>
         </div>
     </div>
 </template>
 <script>
+import VueAMap from 'vue-amap';
 export default {
     data() {
         let pos = [121.598593, 31.211164];
+        let amapManager = new VueAMap.AMapManager();
         return {
             zoom: 14,
             center: pos,
             marker: {
                 position: pos,
                 draggable: true
-            }
+            },
+            plugin: ['ToolBar'],
+            amapManager
         }
     }
 }

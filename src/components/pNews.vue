@@ -4,7 +4,7 @@
         <c-title title="最新资讯" engTitle="News"></c-title>
         <div class="list-wrap">
             <ul class="info-list">
-                <li class="item" v-for="i in 5" :key="i">
+                <li class="item" v-for="(item, index) in newsList" :key="index">
                     <div class="whole fn-clear">
                         <div class="part left">
                             <img :src="news1">
@@ -13,7 +13,7 @@
                             <div>
                                 <span class="label-primary">公司新闻</span>
                                 <p>
-                                    宝信软件成功签约龙山县智慧农业项目
+                                    宝信软件成功签约龙山县智慧农业项目{{index}}
                                 </p>
                                 <span class="time">
                                     2017.05.10
@@ -31,6 +31,35 @@
                     </div>
                 </li>
             </ul>
+
+            <el-carousel ref="newsSlide" indicator-position="none" :autoplay="false" arrow="never" class="info-list-move" v-move="move">
+                <el-carousel-item v-for="(item, index) in newsList" :key="index" class="item">
+                    <div class="whole fn-clear">
+                        <div class="part left">
+                            <img :src="news1">
+                        </div>
+                        <div class="part right">
+                            <div>
+                                <span class="label-primary">公司新闻</span>
+                                <p>
+                                    宝信软件成功签约龙山县智慧农业项目{{index}}
+                                </p>
+                                <span class="time">
+                                    2017.05.10
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </el-carousel-item>
+                <el-carousel-item :key="newsList.length" class="last">
+                    <div class="content">
+                        <p>
+                            READ MORE
+                        </p>
+                        <span class="arrow"><i class="iconfont icon-jiantou"></i></span>
+                    </div>
+                </el-carousel-item>
+            </el-carousel>
         </div>
     </section>
 </div>
@@ -38,14 +67,56 @@
 <script>
 import cTitle from './cTitle'
 import news1 from '../assets/news1.png'
+import move from '../directive/move'
 export default {
     data() {
         return {
-            news1
+            news1,
+            activeIndex : 0,
+            newsList    : [{
+                title   : '宝信软件成功签约龙山县智慧农业项目',
+                date    : '2017.05.10',
+                img     : news1
+            }, {
+                title   : '宝信软件成功签约龙山县智慧农业项目',
+                date    : '2017.05.10',
+                img     : news1
+            }, {
+                title   : '宝信软件成功签约龙山县智慧农业项目',
+                date    : '2017.05.10',
+                img     : news1
+            }, {
+                title   : '宝信软件成功签约龙山县智慧农业项目',
+                date    : '2017.05.10',
+                img     : news1
+            }, {
+                title   : '宝信软件成功签约龙山县智慧农业项目',
+                date    : '2017.05.10',
+                img     : news1
+            }]
+        }
+    },
+    methods: {
+        next() {
+            this.$refs.newsSlide.next()
+        },
+        prev() {
+            this.$refs.newsSlide.prev()
+        },
+        move(type) {
+            if (type === 'right') {
+                this.prev()
+            }
+            if (type === 'left') {
+                this.next()
+            }
         }
     },
     components: {
         cTitle
+    },
+    directives: {
+        move
     }
 }
 </script>
@@ -142,6 +213,83 @@ export default {
         }
     }
 }
+.info-list-move {
+    display: none;
+    position: relative;
+    padding: 20.5% 0;
+    & > .el-carousel__container {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+    }
+    .item, .last {
+        width: 100%;
+    }
+    .item {
+        background: $blue;
+        .part {
+            float: left;
+            width: 50%;
+            position: relative;
+            padding: 20.5% 0;
+            overflow: hidden;
+            font-family: $fontlight;
+            color: $blue;
+            &.right {
+                background: $white;
+                font-size: 1.2rem;
+                & > div {
+                    padding: 20px;
+                    bottom: 0;
+                }
+            }
+            & > * {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            p {
+                font-size: 1.44rem;
+            }
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .last {
+        background: $white;
+        vertical-align: middle;
+        transition: all 0.3s;
+        &:active {
+            color: $blue;
+        }
+        .content {
+            position: relative;
+            padding: 20.5% 0;
+        }
+        .content > * {
+            position: absolute;
+            top: 50%;
+        }
+        p {
+            width: 100%;
+            text-align: center;
+            display: inline-block;
+            margin: -1rem 0 0 0;
+            font-size: 2.4rem
+        }
+        .arrow {
+            display: inline-block;
+            margin-top: -2.5rem;
+            right: 40px;
+            i.iconfont.icon-jiantou {
+                font-size: 4.8rem;
+            }
+        }
+    }
+}
 .time {
     color: $blue;
 }
@@ -152,20 +300,20 @@ export default {
     .list-wrap {
         margin-top: -10px;
         padding-top: 10px;
+        margin-left: -10px;
+        padding-left: 10px;
         overflow-y: scroll;
     }
     .info-list {
-        margin-left: -15px;
-        margin-right: -15px;
-        display: flex;
-        flex-wrap: nowrap;
-        align-items: center;
+        display: none;
+        margin-left: 0;
+        margin-right: 0;
         .item, .last {
-            width: calc(50% - 30px);
-            min-width: 350px;
+            width: 100%;
+            min-width: initial;
             margin-top: 0;
-            margin-left: 15px;
-            margin-right: 15px;
+            margin-left: 0;
+            margin-right: 0;
         }
         .last {
             .content {
@@ -195,6 +343,9 @@ export default {
                 font-size: 1.44rem;
             }
         }
+    }
+    .info-list-move {
+        display: block;
     }
 }
 @media only screen and (min-width: 768px) {

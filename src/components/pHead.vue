@@ -184,6 +184,7 @@ export default {
         background: $bgcolor;
         height: 0;
         overflow: hidden;
+        min-width: 1080px;
         &.visible {
             height: 150px;
             .search-content {
@@ -222,17 +223,18 @@ export default {
     
     .shrink {
         .head-wrap {
-            height: 120px;
+            height: 80px;
             background: $white;
             box-shadow: 0 1px 15px 1px $grey1;
             .logo {
                 transform: scale(0.63);
                 transform-origin: 0 0;
+                top: 20px;
             }
             .nav {
                 margin-left: 246px;
                 .li2 {
-                    margin-top: 40px;
+                    margin-top: 20px;
                 }
                 .menus {
                     a {

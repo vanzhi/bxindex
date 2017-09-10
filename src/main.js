@@ -20,7 +20,7 @@ AMap.initAMapApiLoader({
     // 申请的高德key
     key: 'b26b7c08a5230144460c3c164f61d619',
     // 插件集合
-    plugin: []
+    plugin: ['AMap.ToolBar']
 });
 
 Vue.config.productionTip = false

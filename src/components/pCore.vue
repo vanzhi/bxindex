@@ -2,7 +2,7 @@
     <section class="section-wrap">
         <el-row>
             <el-col :xs="24" :ms="24" :md="24" :lg="6">
-                <c-title title="核心能力" engTitle="Core Competence"></c-title>
+                <c-title title="核心竞争" engTitle="Core Competence"></c-title>
             </el-col>
             <el-col :xs="24" :ms="24" :md="24" :lg="18">
                 <div class="img-list-wrap">
@@ -135,6 +135,22 @@ export default {
                 top: 0;
             }
         }
+        &:hover {
+            .info {
+                color: $blue;
+                transform-origin: 50% 50%;
+                transform: scale(1.1, 1.1);
+                -webkit-transform-origin: 50% 50%;
+                -webkit-transform: scale(1.1, 1.1);
+                -o-transform-origin: 50% 50%;
+                -o-transform: scale(1.1, 1.1);
+                -moz-transform-origin: 50% 50%;
+                -moz-transform: scale(1.1, 1.1);
+            }
+            img {
+                transform: scale(1.1);
+            }
+        }
     }
     .item {
         float: left;
@@ -161,24 +177,10 @@ export default {
             overflow: hidden;
             background: $white;
             transition: all 0.3s;
-            &:hover {
-                color: $blue;
-                transform-origin: 50% 50%;
-                transform: scale(0.9, 0.9);
-                -webkit-transform-origin: 50% 50%;
-                -webkit-transform: scale(0.9, 0.9);
-                -o-transform-origin: 50% 50%;
-                -o-transform: scale(0.9, 0.9);
-                -moz-transform-origin: 50% 50%;
-                -moz-transform: scale(0.9, 0.9);
-            }
         }
         img {
             height: 120%;
             transition: all 0.3s;
-            &:hover {
-                transform: scale(1.1);
-            }
         }
         h5 {
             font-weight: normal;
