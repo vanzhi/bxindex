@@ -3,7 +3,7 @@
         <section class="section-wrap-2">
             <c-title title="视频介绍" engTitle="Video"></c-title>
             <div class="video-wrap">
-                <video :src="videoUrl" id="videoPlayer" src="http://tv.baosteel.com:80/vnews/movie/baosight2017.mp4" loop controls></video>
+                <video :src="videoUrl" id="videoPlayer" loop controls></video>
                 <!-- <div class="video-controls">
                     <transition name="fade">
                         <div class="center-control" v-show="player && player.paused">
@@ -37,7 +37,7 @@ import img from '../assets/videwrap.jpg'
 export default {
     data() {
         return {
-            videoUrl: '',
+            videoUrl: 'http://tv.baosteel.com:80/vnews/movie/baosight2017.mp4',
             videoVisible: false,
             player: null,
             img

@@ -2,8 +2,8 @@
     <section class="section-wrap-2">
         <c-title title="产品手册" engTitle="Produces"></c-title>
         <div class="content">
-            <el-row type="flex" align="middle" :gutter="40">
-                <el-col>
+            <div class="book-flex-box fn-clear">
+                <div class="flex-item" v-for="i in 5" :key="i">
                     <div class="fn-bg-blue">
                         <div class="book-view">
                             <div class="img-wrap">
@@ -14,56 +14,8 @@
                             </div>
                         </div>
                     </div>
-                </el-col>
-                <el-col>
-                    <div class="fn-bg-blue">
-                        <div class="book-view">
-                            <div class="img-wrap">
-                                <img :src="news1">
-                            </div>
-                            <div class="text-area">
-                                <span>产品手册</span>
-                            </div>
-                        </div>
-                    </div>
-                </el-col>
-                <el-col>
-                    <div class="fn-bg-blue">
-                        <div class="book-view">
-                            <div class="img-wrap">
-                                <img :src="news1">
-                            </div>
-                            <div class="text-area">
-                                <span>产品手册</span>
-                            </div>
-                        </div>
-                    </div>
-                </el-col>
-                <el-col>
-                    <div class="fn-bg-blue">
-                        <div class="book-view">
-                            <div class="img-wrap">
-                                <img :src="news1">
-                            </div>
-                            <div class="text-area">
-                                <span>产品手册</span>
-                            </div>
-                        </div>
-                    </div>
-                </el-col>
-                <el-col>
-                    <div class="fn-bg-blue">
-                        <div class="book-view">
-                            <div class="img-wrap">
-                                <img :src="news1">
-                            </div>
-                            <div class="text-area">
-                                <span>产品手册</span>
-                            </div>
-                        </div>
-                    </div>
-                </el-col>
-            </el-row>
+                </div>
+            </div>
         </div>
     </section>
 </template>
@@ -83,6 +35,17 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import '../style/base/param';
+.book-flex-box {
+    padding-top: 10px;
+    margin-top: -10px;
+    margin-left: -20px;
+    width: calc(100% + 40px);
+    .flex-item {
+        float: left;
+        width: calc(20% - 40px);
+        margin: 0 20px;
+    }
+}
 .book-view {
     transition: all 0.3s;
     color: $blue;
@@ -116,6 +79,20 @@ export default {
     }
 }
 @media only screen and (max-width: 768px) {
+    .book-flex-box {
+        display: flex;
+        align-items: center;
+        margin-left: -15px !important;
+        margin-right: -15px !important;
+        overflow: visible;
+
+        // width: calc(100% + 40px);
+        .flex-item {
+            float: initial;
+            width: 100%;
+            margin: 0 15px !important;
+        }
+    }
     .book-view:hover {
         transform: none;
     }
@@ -129,13 +106,6 @@ export default {
             overflow-y: scroll;
             &::-webkit-scrollbar {
                 display: none;
-            }
-        }
-        & > .content .el-row {
-            margin-left: -15px !important;
-            margin-right: -15px !important;
-            & > .el-col {
-                padding: 0 15px !important;
             }
         }
     }
