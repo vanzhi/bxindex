@@ -33,7 +33,7 @@
 </template>
 <script>
 import cTitle from './cTitle'
-import img from '../assets/videwrap.jpg'
+import img from '@/images/videwrap.jpg'
 export default {
     data() {
         return {
@@ -72,7 +72,7 @@ export default {
 }
 </script>
 <style lang="scss" scope>
-@import '../style/base/param';
+@import '../../style/param';
 .video-wrap {
     position: relative;
     margin: 0 auto;

@@ -30,7 +30,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../style/base/param';
+@import '../../style/param';
 footer {
     padding: 60px;
     font-size: 12px;

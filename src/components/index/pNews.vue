@@ -32,7 +32,7 @@
                 </li>
             </ul>
 
-            <el-carousel ref="newsSlide" indicator-position="none" :autoplay="false" arrow="never" class="info-list-move" v-move="move">
+            <el-carousel ref="newsSlide" indicator-position="none" :autoplay="false" arrow="never" class="info-list-move" v-Move="move">
                 <el-carousel-item v-for="(item, index) in newsList" :key="index" class="item">
                     <div class="whole fn-clear">
                         <div class="part left">
@@ -66,8 +66,8 @@
 </template>
 <script>
 import cTitle from './cTitle'
-import news1 from '../assets/news1.png'
-import move from '../directive/move'
+import news1 from '@/images/news1.png'
+import Move from '@/directives/move'
 export default {
     data() {
         return {
@@ -116,12 +116,12 @@ export default {
         cTitle
     },
     directives: {
-        move
+        Move
     }
 }
 </script>
 <style lang="scss" scope>
-@import '../style/base/param';
+@import '../../style/param';
 .info-list {
     margin-left: -20px;
     margin-right: -20px;

@@ -21,7 +21,7 @@
 </template>
 <script>
 import cTitle from './cTitle'
-import news1 from '../assets/news1.png'
+import news1 from '@/images/news1.png'
 export default {
     data() {
         return {
@@ -34,7 +34,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../style/base/param';
+@import '../../style/param';
 .book-flex-box {
     padding-top: 10px;
     margin-top: -10px;

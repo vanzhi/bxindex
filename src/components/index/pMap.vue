@@ -27,7 +27,7 @@ export default {
 }
 </script>
 <style lang="scss" scope>
-@import '../style/base/param';
+@import '../../style/param';
 .map-wrap {
     position: relative;
     padding: 18% 0;

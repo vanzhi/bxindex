@@ -47,11 +47,11 @@
     </section>
 </template>
 <script>
-import slider1 from './../assets/1.png'
-import slider2 from './../assets/2.png'
-import slider3 from './../assets/3.png'
-import slider4 from './../assets/4.png'
-import slider5 from './../assets/5.png'
+import slider1 from '@/images/1.png'
+import slider2 from '@/images/2.png'
+import slider3 from '@/images/3.png'
+import slider4 from '@/images/4.png'
+import slider5 from '@/images/5.png'
 export default {
     data() {
         return {
@@ -102,7 +102,7 @@ export default {
 }
 </script>
 <style lang="scss" scope>
-    @import '../style/base/param';
+    @import '../../style/param';
     .banner {
         position: relative;
         padding: 16.7% 0;

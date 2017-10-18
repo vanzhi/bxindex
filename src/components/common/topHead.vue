@@ -1,25 +1,26 @@
 <template>
-<div :class="{'shrink' : toSmall}" class="head-main">
+<div :class="{'shrink' : toSmall}" class="head-main" v-Scroll="scrollChange">
     <header class="head-wrap">
-        <img class="logo" src="../assets/baoxing_biglogo.png">
+        <img class="logo" :src="bigLogo">
         <ul class="nav" :class="{'openMenu' : open}">
             <transition name="fade">
                 <li class="li1 fn-clear" v-show="!toSmall">
                     <div class="info1"><img :src="textImg"></div>
                     <div class="info2">
                         <div class="left">
+                            <!--
                             <span class="fn-mr-5">SH600845</span>
                             <span>宝信软件</span>
                             <span class="fn-mr--8"><i class="iconfont icon-sanjiao fn-red"></i></span>
                             <span class="fn-mr-5">15.580</span>
                             <span class="fn-mr-50">0.32%</span>
-
+                            -->
                             <span class="fn-mr-5">客服热线</span>
                             <span class="fn-mr-5">800-820-0020</span>
                             <span class="fn-mr-10">400-821-0860</span>
+                            <a class="lang">EN</a>
                         </div>
                         <div class="right">
-                            <a class="fn-mr-5"><i class="iconfont icon-weibo"></i></a>
                             <a><i class="iconfont icon-weixin"></i></a>
                         </div>
                     </div>
@@ -35,9 +36,6 @@
                 </div>
 
                 <div class="search" v-show="!toSmall">
-                    <span>繁</span>
-                    <span>｜</span>
-                    <span>EN</span>
                     <a v-if="!searchVisible" @click="searchVisible=true"><i class="iconfont icon-chaxun"></i></a>
                     <a v-else @click="searchVisible=false"><i class="iconfont icon-shanchu fn-blue"></i></a>
                 </div>
@@ -61,20 +59,21 @@
 </div>
 </template>
 <script>
-import textImg from '@/assets/slogan.png'
+import bigLogo from '@/images/baoxing_biglogo.png'
+import textImg from '@/images/slogan.png'
+import Scroll from '@/directives/scroll'
 export default {
     data() {
         return {
             searchVisible: false,
             open: false,
-            textImg
+            scrollTop: 0,
+            textImg,
+            bigLogo
         }
     },
     props: {
-        scrollTop   : {
-            type    : [Number],
-            default : 0
-        }
+        
     },
     computed: {
         toSmall() {
@@ -84,16 +83,21 @@ export default {
     watch: {
         searchVisible(value) {
             this.$emit('search', this.searchVisible)
-        },
-        scrollTop(value) {
-            
         }
+    },
+    methods: {
+        scrollChange() {
+            this.scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+        }
+    },
+    directives: {
+        Scroll
     }
 }
 </script>
 <!-- head -->
 <style lang="scss">
-    @import '../style/base/param.scss';
+    @import '../../style/param.scss';
     .head-main {
         transition: all 0.3s;
         * {
@@ -130,8 +134,11 @@ export default {
                 }
                 .info2 {
                     .left {
-                        float: left;
+                        float: right;
                         margin-right: 60px;
+                        .lang {
+                            margin-left: 30px;
+                        }
                     }
                     .right {
                         position: absolute;
@@ -352,9 +359,6 @@ export default {
                 .li1 {
                     .info1 {
                         display: block;
-                    }
-                    .info2 {
-                        float: right;
                     }
                 }
             }

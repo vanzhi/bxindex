@@ -7,7 +7,7 @@ import {Row, Col, Carousel, CarouselItem} from 'element-ui'
 import AMap from 'vue-amap';
 import 'normalize.css'
 import '@/style/fonts/iconfont.css'
-import '@/style/base/index.scss'
+import '@/style/index.scss'
 import 'babel-polyfill'
 
 Vue.use(Row)

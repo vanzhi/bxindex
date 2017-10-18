@@ -10,9 +10,7 @@
 <script>
 export default {
     data() {
-        return {
-
-        }
+        return {}
     },
     props           : {
         title       : [String],
@@ -21,7 +19,7 @@ export default {
 }
 </script>
 <style lang="scss" scope>
-@import '../style/base/index.scss';
+@import '../../style/index.scss';
 .title-view {
     margin: 40px 0;
     h2 {
