@@ -133,12 +133,9 @@ export default {
     @media only screen and (min-width: 1800px){
         .part.right {
             p {
-                font-size: 2.4rem;
+                font-size: 1.8rem;
                 margin-bottom: 16px;
                 min-height: initial;
-            }
-            & > div {
-                padding: 60px 40px;
             }
         }
     }

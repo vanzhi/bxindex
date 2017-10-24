@@ -34,7 +34,7 @@
 
             <el-carousel ref="newsSlide" indicator-position="none" :autoplay="false" arrow="never" class="info-list-move" v-Move="move">
                 <el-carousel-item v-for="(item, index) in newsList" v-if="index < 6" :key="index" class="item">
-                    <div class="whole fn-clear">
+                    <router-link tag="div" :to="{name: 'article', query:{firstNodeId:41,secondNodeId:42,thirdNodeId:item.id}}" class="whole fn-clear">
                         <div class="part left">
                             <img :src="news1">
                         </div>
@@ -42,22 +42,22 @@
                             <div>
                                 <span class="label-primary">公司新闻</span>
                                 <p>
-                                    宝信软件成功签约龙山县智慧农业项目{{index}}
+                                    {{item.title}}
                                 </p>
                                 <span class="time">
-                                    2017.05.10
+                                    {{item.addDate}}
                                 </span>
                             </div>
                         </div>
-                    </div>
+                    </router-link>
                 </el-carousel-item>
                 <el-carousel-item :key="newsList.length" class="last">
-                    <div class="content">
+                    <router-link tag="div" :to="{name: 'article', query:{firstNodeId:41,secondNodeId:42}}" class="content">
                         <p>
                             READ MORE
                         </p>
                         <span class="arrow"><i class="iconfont icon-jiantou"></i></span>
-                    </div>
+                    </router-link>
                 </el-carousel-item>
             </el-carousel>
         </div>

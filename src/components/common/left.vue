@@ -191,7 +191,7 @@
         .left-img-wrap {
             position: relative;
             display: block;
-            padding: 12.5% 0;
+            padding: 8% 0;
             & > div {
                 position: absolute;
                 height: 100%;

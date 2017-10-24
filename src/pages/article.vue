@@ -128,16 +128,17 @@
 .article-wrap {
     position: relative;
     display: inline-block;
-    margin-left: 40px;
+    margin-left: 50px;
     vertical-align: top;
-    width: calc(100% - 350px);
+    width: calc(100% - 360px);
+    min-height: 600px;
 }
 .article-header {
     
 }
 .article-main {
-    margin-top: 5.6%;
-    margin-bottom: 5.6%;
+    margin-top: 3.6%;
+    margin-bottom: 3.6%;
     margin-right: 25%;
     color: $grey5;
     font-size: 1.4rem;
@@ -213,7 +214,7 @@
     .less {
         .article-wrap {
             padding: 0 60px;
-            margin: 5.6% 0;
+            margin: 3.6% 0;
             width: 100%;
         }
         .article-header {
@@ -224,7 +225,7 @@
         }
         .article-main {
             margin: 0 auto;
-            margin-top: 5.6%;
+            margin-top: 3.6%;
             width: 65%;
             min-width: 960px;
         }
@@ -240,7 +241,7 @@
 }
 @media only screen and (min-width: 1200px) {
     .article-wrap {
-        width: calc(100% - 370px);
+        width: calc(100% - 380px);
     }
     .article-crumbs {
         right: 80px;
@@ -248,7 +249,6 @@
     .less {
         .article-wrap {
             padding: 0 80px;
-            margin: 5.6% 0;
         }
     }
 }
