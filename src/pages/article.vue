@@ -227,7 +227,7 @@
             margin: 0 auto;
             margin-top: 3.6%;
             width: 65%;
-            min-width: 960px;
+            max-width: 760px;
         }
         .article-title {
             margin-top: 0;

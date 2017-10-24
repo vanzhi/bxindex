@@ -52,6 +52,7 @@ import slider2 from '@/images/2.png'
 import slider3 from '@/images/3.png'
 import slider4 from '@/images/4.png'
 import slider5 from '@/images/5.png'
+import slider6 from '@/images/6.png'
 export default {
     data() {
         return {
@@ -89,6 +90,13 @@ export default {
                 // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
                 // content : '内容信息',
                 imgurl  : slider5,
+                class   : 'bg-grey'
+            }, {
+                title   : '愿景｜使命｜核心价值',
+                desc    : '企业文化',
+                // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
+                // content : '内容信息',
+                imgurl  : slider6,
                 class   : 'bg-grey'
             }],
             activeIndex : 0

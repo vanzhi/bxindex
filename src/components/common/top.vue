@@ -18,7 +18,7 @@
                             <span class="fn-mr-5">客服热线</span>
                             <span class="fn-mr-5">800-820-0020</span>
                             <span class="fn-mr-10">400-821-0860</span>
-                            <router-link :to="{name:'contact', query:{firstNodeId:aboutUs.nodeId}}" class="fn-mr-10 fn-blue">{{aboutUs.nodeName}}</router-link>
+                            <router-link :to="{name: 'article', query:{firstNodeId:45}}" class="fn-mr-10 fn-blue">{{aboutUs.nodeName}}</router-link>
                             <a class="lang">EN</a>
                         </div>
                         <div class="right">

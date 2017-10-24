@@ -2,19 +2,19 @@
     <section class="section-wrap-2">
         <c-title title="核心产品" engTitle="Produces"></c-title>
         <ul class="product-list">
-            <li class="fn-clear">
+            <router-link tag="li" :to="{name: 'article', query:{firstNodeId:50, secondNodeId:51}}" class="fn-clear">
                 <img :src="img1">
                 <span>
                     <span>智慧制造</span>
                 </span>
                 
-            </li><li class="fn-clear">
+            </router-link><router-link tag="li" :to="{name: 'article', query:{firstNodeId:50, secondNodeId:52}}" class="fn-clear">
                 <img :src="img2">
                 <span>
                     <span>智慧城市</span>
                 </span>
                 
-            </li>
+            </router-link>
         </ul>
     </section>
 </template>

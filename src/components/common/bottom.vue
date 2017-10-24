@@ -1,11 +1,7 @@
 <template>
     <footer>
         <ul class="link-list">
-            <li><a>宝信网站群</a></li>
-            <li><a>网站地图</a></li>
-            <li><a>友情链接</a></li>
-            <li><a>法律声明</a></li>
-            <li><a>帮助信息</a></li>
+            <router-link tag="li" :to="{name: 'article', query:{firstNodeId:item.parentId, secondNodeId:item.nodeId}}" v-if="item.nodeId !== 55" v-for="(item, index) in list" ::key="index"><a>{{item.nodeName}}</a></router-link>
         </ul>
         <div>
             <span>COPYRIGHT</span>
@@ -13,7 +9,7 @@
             <span>上海宝信软件股份有限公司</span>
             <span>沪ICP备10001471号</span>
             <div class="fn-right right-wrap">
-                <span>网站地图</span>
+                <router-link :to="{name: 'article', query:{firstNodeId:53, secondNodeId:55}}" tag="span">网站地图</router-link>
                 <i class="iconfont icon-sjup"></i>
             </div>
         </div>
@@ -26,7 +22,17 @@
 </template>
 <script>
 export default {
-  
+    props: {
+        
+    },
+    computed: {
+        list() {
+            if (!this.$store.getters.secondLevelMenuListById[53]) {
+                return []
+            }
+            return this.$store.getters.secondLevelMenuListById[53]
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>
@@ -48,13 +54,21 @@ footer {
     li {
         display: inline-block;
         &:after {
-            content: ' |'
+            display:inline-block;
+            content: '|';
+            margin: 0 5px;
+        }
+        &:last-child {
+            &:after {
+                display: none;
+            }
         }
     }
 }
 .right-wrap {
     span {
         margin-right: 3px;
+        cursor:pointer;
     }
     .iconfont {
         font-size: 12px;
