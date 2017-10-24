@@ -1,7 +1,7 @@
 <template>
 <div :class="{'shrink' : toSmall}" class="head-main" v-Scroll="scrollChange">
     <header class="head-wrap">
-        <img class="logo" :src="bigLogo">
+        <router-link to="/"><img class="logo" :src="bigLogo"></router-link>
         <ul class="nav" :class="{'openMenu' : open}">
             <transition name="fade">
                 <li class="li1 fn-clear" v-show="!toSmall">
@@ -18,6 +18,7 @@
                             <span class="fn-mr-5">客服热线</span>
                             <span class="fn-mr-5">800-820-0020</span>
                             <span class="fn-mr-10">400-821-0860</span>
+                            <router-link :to="{name:'contact', query:{firstNodeId:aboutUs.nodeId}}" class="fn-mr-10 fn-blue">{{aboutUs.nodeName}}</router-link>
                             <a class="lang">EN</a>
                         </div>
                         <div class="right">
@@ -28,11 +29,17 @@
             </transition>
             <li class="li2 fn-clear">
                 <div class="menus fn-clear">
-                    <a href="#" class="active">专业领域</a>
-                    <a href="#">行业应用</a>
-                    <a href="#">新闻中心</a>
-                    <a href="#">投资者关系</a>
-                    <a href="#">加入我们</a>
+                    <template v-if="$store.getters.firstLevelMenuList.length > 0" >
+                        <router-link @click.native="open=false" :class="{'active' : pNodeId === item.nodeId}" v-if="index < 6" :to="{name: 'article', query: {firstNodeId:item.nodeId}}" v-for="(item, index) in $store.getters.firstLevelMenuList" :key="item.nodeId">{{item.nodeName}}</router-link>
+                    </template>
+                    <template v-else>
+                        <router-link to="/article">专业领域</router-link>
+                        <router-link to="/article">行业应用</router-link>
+                        <router-link to="/article">关于宝信</router-link>
+                        <router-link to="/article">投资者关系</router-link>
+                        <router-link to="/article">加入我们</router-link>
+                        <router-link to="/article">媒体中心</router-link>
+                    </template>
                 </div>
 
                 <div class="search" v-show="!toSmall">
@@ -59,6 +66,7 @@
 </div>
 </template>
 <script>
+import {mapGetters} from 'vuex'
 import bigLogo from '@/images/baoxing_biglogo.png'
 import textImg from '@/images/slogan.png'
 import Scroll from '@/directives/scroll'
@@ -68,6 +76,7 @@ export default {
             searchVisible: false,
             open: false,
             scrollTop: 0,
+            menuPathName: ['major', 'trade', 'about', 'investor', 'join', 'media'],
             textImg,
             bigLogo
         }
@@ -78,7 +87,16 @@ export default {
     computed: {
         toSmall() {
             return this.scrollTop >= 250;
-        }
+        },
+        aboutUs() {
+            if (!this.$store.getters.firstLevelMenuList[6]) {
+                return {
+                    nodeName : '联系我们'
+                }
+            }
+            return this.$store.getters.firstLevelMenuList[6]
+        },
+        ...mapGetters(['pNodeId'])
     },
     watch: {
         searchVisible(value) {
@@ -88,7 +106,10 @@ export default {
     methods: {
         scrollChange() {
             this.scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-        }
+        },
+    },
+    mounted() {
+        
     },
     directives: {
         Scroll
@@ -247,7 +268,7 @@ export default {
                     a {
                         line-height: 40px;
                         padding: 0 20px;
-                        margin-right: 40px;
+                        margin-right: 20px;
                     }
                     a:last-child {
                         margin-right: 0;
@@ -293,6 +314,7 @@ export default {
                 }
                 .li2 {
                     margin-top: 50px;
+                    box-shadow: 0 1px 5px 0px #ded7d7;
                 }
                 .menus {
                     width: 100%;
@@ -347,7 +369,7 @@ export default {
             .nav {
                 .menus {
                     a {
-                        margin-right: 80px;
+                        margin-right: 65px;
                     }
                 }
             }

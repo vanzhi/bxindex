@@ -11,7 +11,7 @@
             </li><li class="fn-clear">
                 <img :src="img2">
                 <span>
-                    <span>智慧制造</span>
+                    <span>智慧城市</span>
                 </span>
                 
             </li>

@@ -6,7 +6,6 @@
         <p-video></p-video>
         <p-books></p-books>
         <p-map></p-map>
-        <p-bottom></p-bottom>
         <!-- <div class="back-top"><i class="iconfont icon-uparrow"></i></div> -->
     </div>
 </template>
@@ -17,7 +16,6 @@ import pNews from '@/components/index/pNews'
 import pVideo from '@/components/index/pVideo'
 import pBooks from '@/components/index/pBooks'
 import pMap from '@/components/index/pMap'
-import pBottom from '@/components/index/pBottom'
 
 function backTo(top, time) {
     let clientHeight    = document.documentElement.clientHeight
@@ -63,8 +61,7 @@ export default {
         pNews,
         pVideo,
         pBooks,
-        pMap,
-        pBottom
+        pMap
     }
 }
 </script>

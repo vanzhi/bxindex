@@ -4,7 +4,7 @@
         <c-title title="最新资讯" engTitle="News"></c-title>
         <div class="list-wrap">
             <ul class="info-list">
-                <li class="item" v-for="(item, index) in newsList" :key="index">
+                <router-link tag="li" :to="{name: 'article', query:{firstNodeId:41,secondNodeId:42,thirdNodeId:item.id}}" class="item" v-for="(item, index) in newsList" :key="index">
                     <div class="whole fn-clear">
                         <div class="part left">
                             <img :src="news1">
@@ -13,27 +13,27 @@
                             <div>
                                 <span class="label-primary">公司新闻</span>
                                 <p>
-                                    宝信软件成功签约龙山县智慧农业项目{{index}}
+                                    {{item.title}}
                                 </p>
                                 <span class="time">
-                                    2017.05.10
+                                    {{item.addDate}}
                                 </span>
                             </div>
                         </div>
                     </div>
-                </li>
-                <li class="last">
+                </router-link>
+                <router-link tag="li" :to="{name: 'article', query:{firstNodeId:41,secondNodeId:42}}" class="last">
                     <div class="content">
                         <p>
                             READ MORE
                         </p>
                         <span class="arrow"><i class="iconfont icon-jiantou"></i></span>
                     </div>
-                </li>
+                </router-link>
             </ul>
 
             <el-carousel ref="newsSlide" indicator-position="none" :autoplay="false" arrow="never" class="info-list-move" v-Move="move">
-                <el-carousel-item v-for="(item, index) in newsList" :key="index" class="item">
+                <el-carousel-item v-for="(item, index) in newsList" v-if="index < 6" :key="index" class="item">
                     <div class="whole fn-clear">
                         <div class="part left">
                             <img :src="news1">
@@ -68,32 +68,13 @@
 import cTitle from './cTitle'
 import news1 from '@/images/news1.png'
 import Move from '@/directives/move'
+import {API_GetContentByNodeId} from '@/fetch/restApi'
 export default {
     data() {
         return {
             news1,
             activeIndex : 0,
-            newsList    : [{
-                title   : '宝信软件成功签约龙山县智慧农业项目',
-                date    : '2017.05.10',
-                img     : news1
-            }, {
-                title   : '宝信软件成功签约龙山县智慧农业项目',
-                date    : '2017.05.10',
-                img     : news1
-            }, {
-                title   : '宝信软件成功签约龙山县智慧农业项目',
-                date    : '2017.05.10',
-                img     : news1
-            }, {
-                title   : '宝信软件成功签约龙山县智慧农业项目',
-                date    : '2017.05.10',
-                img     : news1
-            }, {
-                title   : '宝信软件成功签约龙山县智慧农业项目',
-                date    : '2017.05.10',
-                img     : news1
-            }]
+            newsList    : []
         }
     },
     methods: {
@@ -110,7 +91,21 @@ export default {
             if (type === 'left') {
                 this.next()
             }
+        },
+        getNewsList() {
+            API_GetContentByNodeId({
+                nodeId : 42,
+                pageSize: 5,
+                pageNo: 0
+            }).then(success => {
+                this.newsList = success.data.data
+            }).catch(error => {
+
+            })
         }
+    },
+    mounted() {
+        this.getNewsList()
     },
     components: {
         cTitle

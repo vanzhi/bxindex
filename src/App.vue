@@ -1,13 +1,17 @@
 <template>
   <div id="app" class="main" :class="{'open' : open}">
-    <Top-Head @search="setOpen"></Top-Head>
-    <router-view></router-view>
+    <Top @search="setOpen"></Top>
+    <div class="content-wrap">
+      <router-view></router-view>
+    </div>
     <To-Top></To-Top>
+    <Bottom></Bottom>
   </div>
 </template>
 
 <script>
-import TopHead from './components/common/topHead'
+import Top from './components/common/top'
+import Bottom from './components/common/bottom'
 import ToTop from './components/common/toTop'
 export default {
   name: 'app',
@@ -16,19 +20,26 @@ export default {
       open: false
     }
   },
+  watch: {
+    
+  },
   methods: {
     setOpen(open) {
       this.open = open
-    }
+    },
   },
   components: {
-    TopHead,
-    ToTop
+    Top,
+    ToTop,
+    Bottom
   }
 }
 </script>
 <style lang="scss">
 @import './style/param';
+.content-wrap {
+  min-height: 700px;
+}
 .main {
     position: relative;
     overflow: hidden;
