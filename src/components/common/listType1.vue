@@ -78,7 +78,7 @@ export default {
             left: 0;
         }
         p {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
         }
         img {
             width: 100%;
@@ -112,7 +112,7 @@ export default {
         .part {
             p {
                 margin-bottom: 0;
-                min-height: 60px;
+                min-height: 50px;
             }
         }
         .less .item {
@@ -126,7 +126,7 @@ export default {
     @media only screen and (min-width: 1200px) {
         .part.right {
             p {
-                font-size: 2.0rem;
+                font-size: 1.4rem;
             }
         }
     }

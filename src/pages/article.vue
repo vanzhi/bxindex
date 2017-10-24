@@ -11,12 +11,12 @@
                         <li>{{currentNode.nodeName}}</li>
                     </ul>
                 </div>
-                <!-- <div class="article-main" v-html="contentObj.content">
-                    
-                </div> -->
-                <div class="article-main">
+                <div class="article-main" v-html="contentObj.content">
                     
                 </div>
+                <!-- <div class="article-main">
+                    
+                </div> -->
             </template>
             <template v-else>
                 <div class="article-list">
