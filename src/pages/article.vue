@@ -2,13 +2,13 @@
     <div :class="{'less' : this.menuList.length < 6}">
         <Left :menuList="menuList" :currentNode="currentNode" :pNode="pNode" v-if="this.menuList.length"></Left><div class="article-wrap">
             <!-- 测试 -->
-            <div class="article-header">
+            <!-- <div class="article-header">
                 <h2 class="article-title">111111</h2>
                 <h3 class="article-subtitle">222</h3>
             </div>
             <div class="article-main">
                 <Card></Card>
-            </div>
+            </div> -->
             
             <!-- 内容列表 -->
             <template v-if="listType === 'content' && !contentObj.content">
