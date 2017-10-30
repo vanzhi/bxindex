@@ -18,11 +18,11 @@
                             <span class="fn-mr-5">客服热线</span>
                             <span class="fn-mr-5">800-820-0020</span>
                             <span class="fn-mr-10">400-821-0860</span>
-                            <router-link :to="{name: 'article', query:{firstNodeId:45}}" class="fn-mr-10 fn-blue">{{aboutUs.nodeName}}</router-link>
-                            <a class="lang">EN</a>
+                            <router-link to="/article/45" class="fn-mr-10 fn-blue">{{aboutUs.nodeName}}</router-link>
+                            <a target="_blank" href="//en.baosight.com/" class="lang">EN</a>
                         </div>
                         <div class="right">
-                            <a><i class="iconfont icon-weixin"></i></a>
+                            <router-link to="/article/41/44"><i class="iconfont icon-weixin"></i></router-link>
                         </div>
                     </div>
                 </li>
@@ -30,15 +30,7 @@
             <li class="li2 fn-clear">
                 <div class="menus fn-clear">
                     <template v-if="$store.getters.firstLevelMenuList.length > 0" >
-                        <router-link @click.native="open=false" :class="{'active' : pNodeId === item.nodeId}" v-if="index < 6" :to="{name: 'article', query: {firstNodeId:item.nodeId}}" v-for="(item, index) in $store.getters.firstLevelMenuList" :key="item.nodeId">{{item.nodeName}}</router-link>
-                    </template>
-                    <template v-else>
-                        <router-link to="/article">专业领域</router-link>
-                        <router-link to="/article">行业应用</router-link>
-                        <router-link to="/article">关于宝信</router-link>
-                        <router-link to="/article">投资者关系</router-link>
-                        <router-link to="/article">加入我们</router-link>
-                        <router-link to="/article">媒体中心</router-link>
+                        <router-link @click.native="open=false" :class="{'active' : currentNodeId === item.nodeId}" v-if="index < 6" :to="'/article/' + item.nodeId" v-for="(item, index) in $store.getters.firstLevelMenuList" :key="item.nodeId">{{item.nodeName}}</router-link>
                     </template>
                 </div>
 
@@ -96,7 +88,10 @@ export default {
             }
             return this.$store.getters.firstLevelMenuList[6]
         },
-        ...mapGetters(['pNodeId'])
+        currentNodeId() {
+            let path = this.$route.params.nodepath ? this.$route.params.nodepath.split('/') : []
+            return path[0] * 1
+        }
     },
     watch: {
         searchVisible(value) {
@@ -173,6 +168,7 @@ export default {
                 }
             }
             .li2 {
+                min-height: 20px;
                 line-height: initial;
             }
             .menus {

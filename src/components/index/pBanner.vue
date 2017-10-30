@@ -7,8 +7,9 @@
                         ref                 ="imgSlider"
                         indicator-position  ="none"
                         arrow               ="never"
-                        :autoplay           ="true"
                         @change             ="bannerChnge"
+                        :interval           ="8000"
+                        :autoplay           ="autoPlayed"
                         class               ="img">
                         <el-carousel-item v-for="(s, i) in sliders" :key="i">
                             <img :src="s.imgurl">
@@ -38,7 +39,7 @@
                             <span>{{'0' + sliders.length}}</span>
                         </div>
                         <div>
-                            <span class="dot" @mouseenter="$refs.imgSlider.setActiveItem(i)" v-for="(s, i) in sliders" :key="i" :class="{'active' : activeIndex === i}"></span>
+                            <span v-for="(s, i) in sliders" :key="i" class="dot" :class="{'active' : activeIndex === i}" @mouseenter="enterDote(i)" @mousemove="enterDote(i)" @mouseleave="leaveDote"></span>
                         </div>
                     </div>
                 </div>
@@ -56,7 +57,15 @@ import slider6 from '@/images/6.png'
 export default {
     data() {
         return {
+            autoPlayed : true,
             sliders : [{
+                title   : '愿景｜使命｜核心价值',
+                desc    : '企业文化',
+                // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
+                // content : '内容信息',
+                imgurl  : slider6,
+                class   : 'bg-grey'
+            }, {
                 title   : '稳定盈利｜备受尊敬',
                 desc    : '打造一个智慧服务企业',
                 // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
@@ -91,13 +100,6 @@ export default {
                 // content : '内容信息',
                 imgurl  : slider5,
                 class   : 'bg-grey'
-            }, {
-                title   : '愿景｜使命｜核心价值',
-                desc    : '企业文化',
-                // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
-                // content : '内容信息',
-                imgurl  : slider6,
-                class   : 'bg-grey'
             }],
             activeIndex : 0
         }
@@ -105,6 +107,13 @@ export default {
     methods: {
         bannerChnge(i) {
             this.activeIndex = i;
+        },
+        enterDote(i) {
+            this.autoPlayed = false
+            this.$refs.imgSlider.setActiveItem(i)
+        },
+        leaveDote() {
+            this.autoPlayed = true
         }
     }
 }

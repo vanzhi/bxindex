@@ -1,10 +1,57 @@
 <template>
     <div :class="{'less' : this.menuList.length < 6}">
-        <Left :menuList="menuList" v-if="this.menuList.length"></Left><div class="article-wrap">
-            <template v-if="contentObj">
+        <Left :menuList="menuList" :currentNode="currentNode" :pNode="pNode" v-if="this.menuList.length"></Left><div class="article-wrap">
+            <!-- 测试 -->
+            <div class="article-header">
+                <h2 class="article-title">111111</h2>
+                <h3 class="article-subtitle">222</h3>
+            </div>
+            <div class="article-main">
+                <Card></Card>
+            </div>
+            
+            <!-- 内容列表 -->
+            <template v-if="listType === 'content' && !contentObj.content">
+                <h2 class="article-title">{{currentNode.nodeName}}</h2>
+                <div class="article-list">
+                    <ul class="fn-clear">
+                        <Content-List v-for="(item, index) in contentList" :currentNode="currentNode" :key="item.id" :item="item"></Content-List>
+                    </ul>
+                </div>
+            </template>
+            
+            <!-- 外链列表 -->
+            <template v-else-if="listType === 'link'">
+                <h2 class="article-title">{{currentNode.nodeName}}</h2>
+                <div class="article-main">
+                    <Link-List  
+                        v-for       ="(item, index) in contentList" 
+                        :currentNode="currentNode" 
+                        :key        ="item.id" 
+                        :item       ="item">
+                    </Link-List>
+                </div>
+            </template>
+
+            <!-- 分页 -->
+            <template v-if="listType && !contentObj.content">
+                <div class="article-main">
+                    <el-pagination
+                        small
+                        layout          ="prev, pager, next"
+                        :total          ="total"
+                        :current-page   ="pageNo + 1"
+                        :page-size      ="10"
+                        @current-change ="currentChange">
+                    </el-pagination>
+                </div>
+            </template>
+
+            <!-- 文本内容 -->
+            <template v-if="contentObj.content">
                 <div class="article-header">
                     <h2 class="article-title">{{contentObj.title}}</h2>
-                    <h3 class="article-subtitle">{{currentNode.content}}</h3>
+                    <h3 class="article-subtitle">{{currentNode.title}}</h3>
                     <ul class="article-crumbs">
                         <li>首页</li>
                         <li>{{pNode.nodeName}}</li>
@@ -14,23 +61,6 @@
                 <div class="article-main" v-html="contentObj.content">
                     
                 </div>
-                <!-- <div class="article-main">
-                    
-                </div> -->
-            </template>
-            <template v-else>
-                <div class="article-list">
-                    <ul class="fn-clear">
-                        <List-Type1 v-for="(item, index) in contentList" :key="item.id" :item="item"></List-Type1>
-                    </ul>
-                    <el-pagination
-                        small
-                        layout="prev, pager, next"
-                        :total="total"
-                        @current-change="currentChange"
-                        >
-                    </el-pagination>
-                </div>
             </template>
         </div>
     </div>
@@ -38,10 +68,13 @@
 <script>
     import {mapGetters} from 'vuex'
     import Left from '@/components/common/left'
-    import ListType1 from '@/components/common/listType1.vue'
+    import ContentList from '@/components/common/contentList'
+    import LinkList from '@/components/common/linkList'
     import {API_GetContentByNodeId} from '@/fetch/restApi'
 
     import WeChat from '@/components/template/wechat'
+    import History from '@/components/template/history'
+    import Card from '@/components/template/card'
     export default {
         data() {
             return {
@@ -52,15 +85,27 @@
             }
         },
         computed: {
-            ...mapGetters(['pNodeId', 'currentNodeId', 'thirdNodeId', 'currentNode', 'pNode']),
+            ...mapGetters(['firstLevelMenuListById', 'secondLevelMenuListById']),
             // 二级栏目菜单列表
             menuList() {
-                let list = this.$store.getters.secondLevelMenuListById[this.pNodeId] || []
+                let list = this.$store.getters.firstLevelMenuListById[this.pNodeId] && this.$store.getters.firstLevelMenuListById[this.pNodeId].childs || []
                 return list
             },
-            // 是否为list展示
-            isList() {
-                return this.currentNodeId && [34, 35, 36, 42].indexOf(this.currentNodeId) > -1
+            // 二级栏目链接类型
+            linkType() {
+                return this.currentNode.linkType
+            },
+            // 链接类型
+            listType() {
+                let type = ''
+                if (this.linkType === 'LinkNoRelatedToChannelAndContent' && this.contentDate) {
+                    if (this.contentDate.data[0] && this.contentDate.data[0].linkUrl) {
+                        type = 'link'
+                    } else {
+                        type = 'content'
+                    }
+                }
+                return type
             },
             // 内容对象列表
             contentList() {
@@ -73,18 +118,48 @@
             },
             // 内容对象
             contentObj() {
-                if (!this.isList) {
-                    return this.contentDate && this.contentDate.data[0] || null
+                if (!this.listType) {
+                    return this.contentDate && this.contentDate.data[0] || {}
                 }
-                if (this.thirdNodeId > -1) {
+                if (this.thirdNodeId) {
                     return this.contentList[this.thirdNodeId]
                 }
-                return null
+                return {}
+            },
+            currentNode() {
+                return this.secondLevelMenuListById[this.currentNodeId] || {}
+            },
+            pNode() {
+                return this.firstLevelMenuListById[this.pNodeId] || {}
+            },
+            // 三级菜单id
+            thirdNodeId() {
+                let path = this.$route.params.nodepath ? this.$route.params.nodepath.split('/') : []
+                return path[2] * 1 || 0
+            },
+            // 二级菜单id
+            currentNodeId() {
+                let path = this.$route.params.nodepath ? this.$route.params.nodepath.split('/') : []
+                let nodeId = 0
+                if (path.length > 1) {
+                    nodeId = path[1] * 1
+                } else if (path.length > 0) {
+                    if (this.firstLevelMenuListById[path[0]] && this.firstLevelMenuListById[path[0]].childs.length) {
+                        nodeId = this.firstLevelMenuListById[path[0]].childs[0].nodeId * 1
+                    }
+                }
+                return nodeId
+            },
+            // 一级菜单id
+            pNodeId() {
+                let path = this.$route.params.nodepath ? this.$route.params.nodepath.split('/') : []
+                return path[0] * 1 || 0
             }
         },
         watch: {
-            '$route.query' : function(val) {
-                this.setRouteQueryToStore()
+            currentNodeId : function(val) {
+                this.pageNo = 0
+                this.getArticleByNodeId()
             }
         },
         methods: {
@@ -106,20 +181,22 @@
                 this.getArticleByNodeId()
             },
             setRouteQueryToStore() {
-                this.$store.dispatch('setRouteQuery', {...this.$route.query})
                 // 路由改变，刷新页面
                 this.pageNo = 0
                 this.total = 0
                 this.getArticleByNodeId()
-            }
+            },
         },
         mounted() {
             this.setRouteQueryToStore()
         },
         components: {
             Left,
-            ListType1,
-            WeChat
+            ContentList,
+            WeChat,
+            LinkList,
+            History,
+            Card
         }
     }
 </script>
@@ -156,6 +233,9 @@
 .article-list {
     // margin-right: 25%;
     width: 965px;
+    & > .fn-clear {
+        padding-top: 20px;
+    }
 }
 .article-title {
     font-size: 3.6rem;
@@ -231,6 +311,7 @@
         }
         .article-title {
             margin-top: 0;
+            text-align: center;
         }
         .article-list {
             margin: 0 auto;

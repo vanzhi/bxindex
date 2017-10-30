@@ -4,7 +4,7 @@
         <c-title title="最新资讯" engTitle="News"></c-title>
         <div class="list-wrap">
             <ul class="info-list">
-                <router-link tag="li" :to="{name: 'article', query:{firstNodeId:41,secondNodeId:42,thirdNodeId:item.id}}" class="item" v-for="(item, index) in newsList" :key="index">
+                <router-link tag="li" :to="'/article/41/42/' + item.id" class="item" v-for="(item, index) in newsList" :key="index">
                     <div class="whole fn-clear">
                         <div class="part left">
                             <img :src="news1">
@@ -15,14 +15,14 @@
                                 <p>
                                     {{item.title}}
                                 </p>
-                                <span class="time">
+                                <!-- <span class="time">
                                     {{item.addDate}}
-                                </span>
+                                </span> -->
                             </div>
                         </div>
                     </div>
                 </router-link>
-                <router-link tag="li" :to="{name: 'article', query:{firstNodeId:41,secondNodeId:42}}" class="last">
+                <router-link tag="li" to="/article/41/42" class="last">
                     <div class="content">
                         <p>
                             READ MORE
@@ -34,7 +34,7 @@
 
             <el-carousel ref="newsSlide" indicator-position="none" :autoplay="false" arrow="never" class="info-list-move" v-Move="move">
                 <el-carousel-item v-for="(item, index) in newsList" v-if="index < 6" :key="index" class="item">
-                    <router-link tag="div" :to="{name: 'article', query:{firstNodeId:41,secondNodeId:42,thirdNodeId:item.id}}" class="whole fn-clear">
+                    <router-link tag="div" :to="'/article/41/42/' + item.id" class="whole fn-clear">
                         <div class="part left">
                             <img :src="news1">
                         </div>
@@ -52,7 +52,7 @@
                     </router-link>
                 </el-carousel-item>
                 <el-carousel-item :key="newsList.length" class="last">
-                    <router-link tag="div" :to="{name: 'article', query:{firstNodeId:41,secondNodeId:42}}" class="content">
+                    <router-link tag="div" to="/article/41/42" class="content">
                         <p>
                             READ MORE
                         </p>

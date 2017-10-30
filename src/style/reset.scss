@@ -13,3 +13,4 @@ h1, h2, h3, h4, h5, h6 {margin: 0;}
 a {text-decoration:none;color: inherit;cursor: pointer;}
 video {object-fit: contain;}
 button {border: 0;border: none;cursor: pointer;display: inline-block;}
+input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::-webkit-file-upload-button, button {border-radius: initial;}

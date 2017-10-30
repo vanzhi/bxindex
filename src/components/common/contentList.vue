@@ -1,5 +1,5 @@
 <template>
-    <router-link tag="li" :to="{name:'article', query: {firstNodeId:pNodeId, secondNodeId: currentNodeId, thirdNodeId: item.id}}" class="item">
+    <router-link tag="li" :to="'/article/' + currentNode.parentId + '/' + currentNode.nodeId + '/' + item.id" class="item">
         <div class="whole fn-clear">
             <div class="part left">
                 <img :src="news1">
@@ -10,9 +10,9 @@
                     <p>
                         {{item.title}}
                     </p>
-                    <span class="time">
+                    <!-- <span class="time">
                         {{item.addDate}}
-                    </span>
+                    </span> -->
                 </div>
             </div>
         </div>
@@ -31,10 +31,14 @@ export default {
        item: {
            type: Object,
            default: () => {return {}}
+       },
+       currentNode: {
+           type: Object,
+           default: () => {return {}}
        }
    },
    computed: {
-       ...mapGetters(['currentNode', 'pNodeId', 'currentNodeId'])
+       
    }
 }
 </script>

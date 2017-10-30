@@ -5,7 +5,7 @@ import Vuex from 'vuex'
 import App from './App'
 import router from './router'
 import {Row, Col, Carousel, CarouselItem, Pagination} from 'element-ui'
-import AMap from 'vue-amap';
+import AMap from 'vue-amap'
 import store from './store/store'
 import {API_GetMenuList} from './fetch/restApi'
 import 'normalize.css'
@@ -26,6 +26,10 @@ AMap.initAMapApiLoader({
     // 插件集合
     plugin: ['AMap.ToolBar']
 });
+
+// router.beforeEach((to, from, each) => {
+
+// })
 
 Vue.config.productionTip = false
 

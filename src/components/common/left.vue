@@ -9,7 +9,26 @@
     <div class="left-main">
         <div class="left-level-first">{{pNode.nodeName}}</div>
         <ul class="left-menu">
-            <router-link @click.native="menuVisible=false" tag="li" :to="{name:'article', query:{firstNodeId:pNodeId, secondNodeId:item.nodeId}}" :class="{'active' : currentNodeId === item.nodeId}" v-for="(item, index) in menuList" :key="item.nodeId"><span>{{item.nodeName}}</span></router-link>
+            <template v-for="(item, index) in menuList">
+                <a 
+                    :key    ="item.nodeId" 
+                    target  ="_blank" 
+                    :href   ="item.linkUrl"
+                    v-if    ="item.linkType === 'LinkNoRelatedToChannelAndContent' && item.linkUrl">
+                    <li
+                        :class  ="{'active' : currentNode.nodeId === item.nodeId}"><span>{{item.nodeName}}</span>
+                    </li>
+                </a>
+                <router-link 
+                    v-else 
+                    :key            ="item.nodeId" 
+                    @click.native   ="menuVisible=false" 
+                    tag             ="li" 
+                    :to             ="'/article/' + pNode.nodeId + '/' + item.nodeId" 
+                    :class          ="{'active' : currentNode.nodeId === item.nodeId}">
+                    <span>{{item.nodeName}}</span>
+                </router-link>
+            </template>
         </ul>
     </div>
 </div>
@@ -26,26 +45,22 @@
             menuList : {
                 type: Array,
                 default: () => []
+            },
+            currentNode: {
+                type: [Object],
+                default: () => {
+                    return {}
+                }
+            },
+            pNode: {
+                type: [Object],
+                default: () => {
+                    return {}
+                }
             }
         },
-        computed: {
-            ...mapGetters(['pNodeId', 'currentNodeId', 'currentNode', 'pNode']),
-            // currentNode() {
-            //     for (let i = 0; i < this.menuList.length; i++) {
-            //         if (this.menuList[i].nodeId === this.currentNodeId) {
-            //             return this.menuList[i]
-            //         }
-            //     }
-            //     return {}
-            // },
-            // pNode() {
-            //     for (let i = 0; i < this.$store.getters.firstLevelMenuList.length; i++) {
-            //         if (this.$store.getters.firstLevelMenuList[i].nodeId === this.pNodeId) {
-            //             return this.$store.getters.firstLevelMenuList[i]
-            //         }
-            //     }
-            //     return {}
-            // }
+        mounted() {
+            
         }
     }
 </script>

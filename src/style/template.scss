@@ -1,4 +1,132 @@
+// 基础
+.tpl-title {
+    font-size: 2.4rem;
+    font-weight: normal;
+    margin-bottom: 20px;
+    .less & {
+        text-align: center;
+    }
+    .cardTitle & {
+        display: inline-block;
+        margin-right: 20px;
+        border-bottom: 1px solid $grey4;
+        cursor: pointer;
+        &.active {
+            color: $blue;
+        }
+        &:first-child {
+            color: $blue;
+        }
+    }
+}
 
+// 董事简介
+.tpl-card-wrap {
+    padding: 20px 30px;
+    background: $white;
+    box-shadow: 2px 2px 5px 0 $grey4;
+    & + .tpl-card-wrap {
+        margin-top: 30px;
+    }
+}
+
+.tpl-card-name {
+    color: $blue;
+    font-weight: normal;
+    font-size: 2.4rem;
+}
+
+.tpl-card-main {
+    font-weight: bold;
+}
+
+// 历史沿革
+.tpl-history-wrap {
+    &:before {
+        position: relative;
+        margin-left: 50%;
+        left: -1px;
+        bottom: -1px;
+        content: '';
+        display: inline-block;
+        height: 40px;
+        width: 0;
+        border-right: 1px dashed $blue;
+    }
+}
+.cardGroup + .cardGroup {
+    display: none;
+}
+.tpl-history-item {
+    position: relative;
+    margin-top: 30px;
+    height: 25px;
+    line-height: 25px;
+    &:nth-child(odd) {
+        text-align: left;
+        .tpl-history-half {
+            padding-right: 5%;
+            & > span {
+                float: right;
+            }
+        }
+    }
+    &:nth-child(even) {
+        text-align: right;
+        .tpl-history-half {
+            padding-left: 6%;
+            & > span {
+                float: left;
+            }
+        }
+    }
+    &:before {
+        margin-top: -48px;
+        margin-left: -1px;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        content: '';
+        display: inline-block;
+        height: 40px;
+        width: 1px;
+        background: $blue;
+    }
+    &:after {
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -8px;
+        position: absolute;
+        content: '';
+        display: inline-block;
+        height: 16px;
+        width: 16px;
+        border-radius: 8px;
+        border: 1px solid $blue;
+        box-sizing: border-box;
+        transition: background 0.3s;
+    }
+
+    &:hover {
+        &:after {
+            background: $blue;
+        }
+    }
+}
+.tpl-history-half {
+    display: inline-block;
+    width: 50%;
+    & > span {
+        &:first-child {
+            padding: 0 20px;
+            color: $blue;
+            text-shadow: 0 0 0.5px $blue;
+        }
+    }
+}
+
+// 微信
 .tpl-wechat-wrap {
     
 }
@@ -47,6 +175,71 @@
 }
 
 @media only screen and (max-width: 768px) {
+    // 基础
+    .tpl-title {
+        font-size: 1.8rem;
+        font-weight: normal;
+        margin-bottom: 20px;
+        .less & {
+            text-align: center;
+        }
+    }
+
+    // 董事简介
+    .tpl-card-wrap {
+        padding: 20px;
+        box-shadow: 1px 1px 3px 0 $grey4;
+        font-size: 1.2rem;
+        & + .tpl-card-wrap {
+            margin-top: 20px;
+        }
+    }
+
+    .tpl-card-name {
+        font-size: 1.8rem;
+    }
+    // 历史沿革
+    .tpl-history-wrap {
+        &:before {
+            margin-left: 10px;
+        }
+    }
+    .tpl-history-item {
+        white-space: nowrap;
+        &:before {
+            left: 10px;
+        }
+        &:after {
+            left: 10px;
+        }
+        &:nth-child(odd) {
+            .tpl-history-half {
+                padding-right: 0;
+                padding-left: 10px;
+                & > span {
+                    float: left;
+                }
+            }
+        }
+        &:nth-child(even) {
+            .tpl-history-half {
+                padding-right: 0;
+                padding-left: 10px;
+                & > span {
+                    float: left;
+                }
+            }
+        }
+    }
+    .tpl-history-half {
+        width: 100%;
+        & > span {
+            &:first-child {
+                padding: 0 5px 0 20px;
+            }
+        }
+    }
+    // 微信
     .tpl-wechat-main {
         margin-bottom: 20px;
         .p1 {
