@@ -4,6 +4,8 @@
         <c-title title="最新资讯" engTitle="News"></c-title>
         <div class="list-wrap">
             <ul class="info-list">
+                <Content-List :currentNode="secondLevelMenuListById[42]" v-for="(item, index) in newsList" :item="item" :key="index"></Content-List>
+                <!--
                 <router-link tag="li" :to="'/article/41/42/' + item.id" class="item" v-for="(item, index) in newsList" :key="index">
                     <div class="whole fn-clear">
                         <div class="part left">
@@ -15,13 +17,14 @@
                                 <p>
                                     {{item.title}}
                                 </p>
-                                <!-- <span class="time">
-                                    {{item.addDate}}
-                                </span> -->
+                                <span class="time">
+                                    {{item.addDate.split(' ')[0].replace(/\-+/g, '.')}}
+                                </span>
                             </div>
                         </div>
                     </div>
                 </router-link>
+                -->
                 <router-link tag="li" to="/article/41/42" class="last">
                     <div class="content">
                         <p>
@@ -45,7 +48,7 @@
                                     {{item.title}}
                                 </p>
                                 <span class="time">
-                                    {{item.addDate}}
+                                    {{item.addDate.split(' ')[0].replace(/\-+/g, '.')}}
                                 </span>
                             </div>
                         </div>
@@ -65,9 +68,11 @@
 </div>
 </template>
 <script>
+import {mapGetters} from 'vuex'
 import cTitle from './cTitle'
 import news1 from '@/images/news1.png'
 import Move from '@/directives/move'
+import ContentList from '@/components/common/contentList'
 import {API_GetContentByNodeId} from '@/fetch/restApi'
 export default {
     data() {
@@ -76,6 +81,9 @@ export default {
             activeIndex : 0,
             newsList    : []
         }
+    },
+    computed: {
+        ...mapGetters(['secondLevelMenuListById'])
     },
     methods: {
         next() {
@@ -108,7 +116,8 @@ export default {
         this.getNewsList()
     },
     components: {
-        cTitle
+        cTitle,
+        ContentList
     },
     directives: {
         Move
@@ -246,10 +255,13 @@ export default {
                 left: 0;
             }
             p {
-                font-size: 1.44rem;
+                font-size: 1.2rem;
             }
             img {
                 width: 100%;
+            }
+            .time {
+                font-size: 1.2rem;
             }
         }
     }

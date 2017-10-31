@@ -1,15 +1,6 @@
 <template>
     <div :class="{'less' : this.menuList.length < 6}">
-        <Left :menuList="menuList" :currentNode="currentNode" :pNode="pNode" v-if="this.menuList.length"></Left><div class="article-wrap">
-            <!-- 测试 -->
-            <!-- <div class="article-header">
-                <h2 class="article-title">111111</h2>
-                <h3 class="article-subtitle">222</h3>
-            </div>
-            <div class="article-main">
-                <We-Chat></We-Chat>
-            </div> -->
-            
+        <Left :menuList="menuList" :currentNode="currentNode" :pNode="pNode" v-if="this.menuList.length"></Left><div class="article-wrap"> 
             <!-- 内容列表 -->
             <template v-if="listType === 'content' && !contentObj.content">
                 <h2 class="article-title">{{currentNode.nodeName}}</h2>
@@ -51,15 +42,15 @@
             <template v-if="contentObj.content">
                 <div class="article-header">
                     <h2 class="article-title">{{contentObj.title}}</h2>
-                    <h3 class="article-subtitle">{{currentNode.title}}</h3>
+                    <h3 class="article-subtitle" v-if="thirdNodeId">{{contentObj.addDate}}</h3>
                     <ul class="article-crumbs">
                         <li>首页</li>
                         <li>{{pNode.nodeName}}</li>
                         <li>{{currentNode.nodeName}}</li>
                     </ul>
                 </div>
-                <div class="article-main" v-html="contentObj.content">
-                    
+                <div class="article-main">
+                    <component :is="contentTemplate"></component>
                 </div>
             </template>
         </div>
@@ -71,10 +62,15 @@
     import ContentList from '@/components/common/contentList'
     import LinkList from '@/components/common/linkList'
     import {API_GetContentByNodeId} from '@/fetch/restApi'
+    import templateCommon from '@/components/template/template'
 
     import WeChat from '@/components/template/wechat'
     import History from '@/components/template/history'
     import Card from '@/components/template/card'
+    import Common from '@/components/template/common'
+    import Enterprise from '@/components/template/enterprise'
+    import Honor from '@/components/template/honor'
+
     export default {
         data() {
             return {
@@ -86,6 +82,13 @@
         },
         computed: {
             ...mapGetters(['firstLevelMenuListById', 'secondLevelMenuListById']),
+            contentTemplate() {
+                // return 'Honor'
+                return {
+                    ...templateCommon,
+                    template : '<div>' + this.contentObj.content + '</div>'
+                }
+            },
             // 二级栏目菜单列表
             menuList() {
                 let list = this.$store.getters.firstLevelMenuListById[this.pNodeId] && this.$store.getters.firstLevelMenuListById[this.pNodeId].childs || []
@@ -196,7 +199,10 @@
             WeChat,
             LinkList,
             History,
-            Card
+            Card,
+            Common,
+            Enterprise,
+            Honor
         }
     }
 </script>
@@ -221,7 +227,7 @@
     font-size: 1.4rem;
     line-height: 1.7;
     margin-right: 25%;
-    min-width: 670px;
+    min-width: 800px;
     // background: $white;
     p {
         margin: 3.7% 0;

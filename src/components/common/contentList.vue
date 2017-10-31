@@ -10,9 +10,9 @@
                     <p>
                         {{item.title}}
                     </p>
-                    <!-- <span class="time">
-                        {{item.addDate}}
-                    </span> -->
+                    <span class="time">
+                        {{item.addDate.split(' ')[0].replace(/\-+/g, '.')}}
+                    </span>
                 </div>
             </div>
         </div>
