@@ -7,7 +7,7 @@
                 <h3 class="article-subtitle">222</h3>
             </div>
             <div class="article-main">
-                <Card></Card>
+                <We-Chat></We-Chat>
             </div> -->
             
             <!-- 内容列表 -->

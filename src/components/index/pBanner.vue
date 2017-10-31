@@ -64,42 +64,42 @@ export default {
                 // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
                 // content : '内容信息',
                 imgurl  : slider6,
-                class   : 'bg-grey'
+                class   : 'bg-1'
             }, {
                 title   : '稳定盈利｜备受尊敬',
                 desc    : '打造一个智慧服务企业',
                 // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
                 // content : '内容信息',
                 imgurl  : slider1,
-                class   : 'bg-blue'
+                class   : 'bg-2'
             }, {
                 title   : '智慧制造｜智慧城市',
                 desc    : '聚焦两个核心业务',
                 // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
                 // content : '内容信息',
                 imgurl  : slider2,
-                class   : 'bg-brown'
+                class   : 'bg-3'
             }, {
                 title   : '云计算服务｜工业大数据｜金融软件｜金融服务',
                 desc    : '培育三个新的业务方向',
                 // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
                 // content : '内容信息',
                 imgurl  : slider3,
-                class   : 'bg-green'
+                class   : 'bg-4'
             }, {
                 title   : 'IDC｜无人化｜物联网｜智能交通',
                 desc    : '发展四个战略业务',
                 // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
                 // content : '内容信息',
                 imgurl  : slider4,
-                class   : 'bg-purple'
+                class   : 'bg-5'
             }, {
                 title   : '信息化｜自动化｜信息服务｜智能化｜机电一体化',
                 desc    : '优化构成核心竞争力的五大传统业务',
                 // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
                 // content : '内容信息',
                 imgurl  : slider5,
-                class   : 'bg-grey'
+                class   : 'bg-6'
             }],
             activeIndex : 0
         }
@@ -244,39 +244,58 @@ export default {
     .count-wrap {
         width: 90px;
     }
-    .bg-blue {
-        
-    }
-    .bg-brown {
+    .bg-6 {
+        background: #5411b0;
         .count, .content h3 {
-            color: $dark;
+            color: #ffca13;
         }
         .dot.active {
-            background: $dark;
+            background: #ffca13;
         }
     }
-    .bg-green {
+    .bg-5 {
+        background: #0093cb;
         .count, .content h3 {
-            color: $greenlight;
+            color: #d2df32;
         }
         .dot.active {
-            background: $greenlight;
+            background: #d2df32;
         }
     }
-    .bg-purple {
+    .bg-4 {
+        background: #5f1dc9;
         .count, .content h3 {
-            color: $yellowlight;
+            color: #fed751;
         }
         .dot.active {
-            background: $yellowlight;
+            background: #fed751;
         }
     }
-    .bg-grey {
+    .bg-3 {
+        background: #4b30d1;
         .count, .content h3 {
-            color: $brownlight;
+            color: #ffca13;
         }
         .dot.active {
-            background: $brownlight;
+            background: #ffca13;
+        }
+    }
+    .bg-2 {
+        background: #127cac;
+        .count, .content h3 {
+            color: #49c7ff;
+        }
+        .dot.active {
+            background: #49c7ff;
+        }
+    }
+    .bg-1 {
+        background: #004bb9;
+        .count, .content h3 {
+            color: #64b4ff;
+        }
+        .dot.active {
+            background: #64b4ff;
         }
     }
     .move-enter, .move-leave-to {
