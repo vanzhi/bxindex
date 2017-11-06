@@ -76,3 +76,8 @@ export const API_GetMenuList = (params) => {
 export const API_GetContentByNodeId = (params) => {
     return fetchRequest(['', params.nodeId, 'content/list'].join('/'), {pageNo:params.pageNo, pageSize:params.pageSize}, 'POST')
 }
+
+// 查询内容
+export const API_GetSearchResult = (params) => {
+    return fetchRequest('/content/search', params, 'POST')
+}

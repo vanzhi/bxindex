@@ -12,7 +12,8 @@ export default new Vuex.Store({
         menuList: [],
         firstLevelMenuList: [],
         firstLevelMenuListById: {},
-        secondLevelMenuListById: {}
+        secondLevelMenuListById: {},
+        searchText: ''
     },
     getters: {
         firstLevelMenuList : state => {
@@ -24,6 +25,7 @@ export default new Vuex.Store({
         secondLevelMenuListById : state => {
             return state.secondLevelMenuListById
         },
+        searchText: state => state.searchText
     },
     actions: {
         getMenuList: ({dispatch, commit, state}) => {
@@ -32,7 +34,7 @@ export default new Vuex.Store({
             }).catch(error => {
                 
             })
-        }
+        },
     },
     mutations: {
         setMenuList: (state, playload) => {
@@ -50,6 +52,10 @@ export default new Vuex.Store({
                 }
             }
         },
+        setSearchText: (state, playload) => {
+            // 设置搜索文字
+            state.searchText = playload
+        }
     },
     plugins: [def]
 })

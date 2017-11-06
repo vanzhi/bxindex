@@ -2,7 +2,7 @@
     <router-link tag="li" :to="'/article/' + currentNode.parentId + '/' + currentNode.nodeId + '/' + item.id" class="item">
         <div class="whole fn-clear">
             <div class="part left">
-                <img :src="news1">
+                <img :src="item.imageUrl ? item.imageUrl : news1">
             </div>
             <div class="part right">
                 <div>

@@ -50,8 +50,8 @@
     <transition name="fade">
         <div class="search-wrap" :class="{'visible' : searchVisible}" v-show="!toSmall">
             <div class="search-content fn-clear">
-                <input placeholder="Search">
-                <button><i class="iconfont icon-chaxun"></i></button>
+                <input placeholder="Search" v-model="searchText" @keyup.13="search">
+                <button @click="search"><i class="iconfont icon-chaxun"></i></button>
             </div>
         </div>
     </transition>
@@ -69,6 +69,7 @@ export default {
             open: false,
             scrollTop: 0,
             menuPathName: ['major', 'trade', 'about', 'investor', 'join', 'media'],
+            searchText: '',
             textImg,
             bigLogo
         }
@@ -91,20 +92,42 @@ export default {
         currentNodeId() {
             let path = this.$route.params.nodepath ? this.$route.params.nodepath.split('/') : []
             return path[0] * 1
-        }
+        },
     },
     watch: {
         searchVisible(value) {
             this.$emit('search', this.searchVisible)
+        },
+        '$route' : function() {
+            this.setSearchVisible()
         }
     },
     methods: {
         scrollChange() {
             this.scrollTop = document.documentElement.scrollTop || document.body.scrollTop
         },
+        setSearchText(text) {
+            this.searchText = text
+        },
+        // 到搜索页面
+        search() {
+            let searchText = this.searchText && this.searchText.replace(/^\s*|\s*$/g, '')
+            if (searchText) {
+                this.$router.push({name:'search', query:{querystr : searchText, tag : new Date().getTime()}})
+            }
+        },
+        setSearchVisible() {
+            if (this.$route.path === '/search') {
+                this.searchVisible = true
+                this.setSearchText(this.$route.query.querystr)
+            } else {
+                this.searchVisible = false
+                this.setSearchText('')
+            }
+        }
     },
     mounted() {
-        
+        this.setSearchVisible()
     },
     directives: {
         Scroll

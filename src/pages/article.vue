@@ -1,9 +1,11 @@
 <template>
     <div :class="{'less' : this.menuList.length < 6}">
-        <Left :menuList="menuList" :currentNode="currentNode" :pNode="pNode" v-if="this.menuList.length"></Left><div class="article-wrap"> 
+        <Left :menuList="menuList" :currentNode="currentNode" :pNode="pNode" v-if="this.menuList.length"></Left><div class="article-wrap" v-loading="loading"> 
             <!-- 内容列表 -->
             <template v-if="listType === 'content' && !contentObj.content">
+                <!-- 标题 -->
                 <h2 class="article-title">{{currentNode.nodeName}}</h2>
+                <!-- 列表 -->
                 <div class="article-list">
                     <ul class="fn-clear">
                         <Content-List v-for="(item, index) in contentList" :currentNode="currentNode" :key="item.id" :item="item"></Content-List>
@@ -13,7 +15,9 @@
             
             <!-- 外链列表 -->
             <template v-else-if="listType === 'link'">
+                <!-- 标题 -->
                 <h2 class="article-title">{{currentNode.nodeName}}</h2>
+                <!-- 列表 -->
                 <div class="article-main">
                     <Link-List  
                         v-for       ="(item, index) in contentList" 
@@ -40,6 +44,7 @@
 
             <!-- 文本内容 -->
             <template v-if="contentObj.content">
+                <!-- 标题 -->
                 <div class="article-header">
                     <h2 class="article-title">{{contentObj.title}}</h2>
                     <h3 class="article-subtitle" v-if="thirdNodeId">{{contentObj.addDate}}</h3>
@@ -49,6 +54,7 @@
                         <li>{{currentNode.nodeName}}</li>
                     </ul>
                 </div>
+                <!-- 内容 -->
                 <div class="article-main">
                     <component :is="contentTemplate"></component>
                 </div>
@@ -77,7 +83,8 @@
                 contentDate: null,
                 pageNo: 0,
                 pageSize: 10,
-                total: 0
+                total: 0,
+                loading: false
             }
         },
         computed: {
@@ -113,6 +120,11 @@
             // 内容对象列表
             contentList() {
                 let list = this.contentDate && this.contentDate.data || []
+                return list
+            },
+            // 内容对象列表-id
+            contentListById() {
+                let list = this.contentList
                 let obj = {}
                 for (let i = 0; i < list.length; i ++) {
                     obj[list[i].id] = list[i]
@@ -125,7 +137,7 @@
                     return this.contentDate && this.contentDate.data[0] || {}
                 }
                 if (this.thirdNodeId) {
-                    return this.contentList[this.thirdNodeId]
+                    return this.contentListById[this.thirdNodeId]
                 }
                 return {}
             },
@@ -161,22 +173,25 @@
         },
         watch: {
             currentNodeId : function(val) {
+                if (!val) return
                 this.pageNo = 0
                 this.getArticleByNodeId()
             }
         },
         methods: {
             getArticleByNodeId() {
+                this.loading = true
                 this.contentDate = null
                 API_GetContentByNodeId({
                     nodeId: this.currentNodeId,
                     pageSize: this.pageSize,
                     pageNo: this.pageNo
                 }).then(success => {
+                    this.loading = false
                     this.contentDate = success.data
                     this.total = this.contentDate.totalCount
                 }).catch(error => {
-
+                    this.loading = false
                 })
             },
             currentChange(pageNo) {
@@ -190,7 +205,7 @@
                 this.getArticleByNodeId()
             },
         },
-        mounted() {
+        created() {
             this.setRouteQueryToStore()
         },
         components: {
@@ -274,7 +289,7 @@
 }
 @media only screen and (max-width: 768px) {
     .article-header {
-        display: none;
+        
     }
     .article-wrap {
         padding: 0 30px;
@@ -295,12 +310,14 @@
         min-width: initial;
         margin-right: 0;
     }
+    .article-crumbs {
+        display: none;
+    }
 }
 @media only screen and (min-width: 768px) {
     .less {
         .article-wrap {
-            padding: 0 60px;
-            margin: 3.6% 0;
+            padding: 3.6% 60px;
             width: 100%;
         }
         .article-header {
@@ -335,7 +352,7 @@
     }
     .less {
         .article-wrap {
-            padding: 0 80px;
+            padding: 3.6% 80px;
         }
     }
 }

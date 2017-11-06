@@ -39,7 +39,7 @@
                 <el-carousel-item v-for="(item, index) in newsList" v-if="index < 6" :key="index" class="item">
                     <router-link tag="div" :to="'/article/41/42/' + item.id" class="whole fn-clear">
                         <div class="part left">
-                            <img :src="news1">
+                            <img :src="item.imageUrl ? item.imageUrl : news1">
                         </div>
                         <div class="part right">
                             <div>
