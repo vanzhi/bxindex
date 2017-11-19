@@ -1,5 +1,6 @@
 import {API_GetVerifyCode, API_AddFeedback} from '@/fetch/restApi'
 export default {
+    mixins : [],
     data() {
         return {
             currentIndex : 0,

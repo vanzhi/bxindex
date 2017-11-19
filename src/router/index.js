@@ -5,6 +5,8 @@ import article from '@/pages/article'
 import search from '@/pages/search'
 import feedbackSuccess from '@/pages/feedbackSuccess'
 
+import template from '@/components/template/index'
+
 Vue.use(Router)
 
 export default new Router({
@@ -27,8 +29,12 @@ export default new Router({
       name: 'feedbackSuccess',
       component: feedbackSuccess
     }, {
+      path: '/template/:nodepath',
+      name: 'template',
+      component: template
+    }, {
       path: '*',
-      redirect: '/index'
+      redirect: '/'
     }
   ]
 })

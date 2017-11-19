@@ -1,7 +1,7 @@
 <template>
 <!-- 意见反馈模版 -->
 <div>
-    <ul class="feedback-form">
+    <ul class="tpl-feedback-form">
         <li>
             <span>公司名称</span>
             <span><input v-model="feedbackParams.company" :class="{'error' : feedbackError === 'company'}"/></span>
@@ -22,16 +22,16 @@
             <span>电子邮件</span>
             <span><input v-model="feedbackParams.email" :class="{'error' : feedbackError === 'email'}"/></span>
         </li>
-        <li class="feedback-mark">
+        <li class="tpl-feedback-mark">
             <span>反馈信息</span>
             <span><textarea v-model="feedbackParams.messages" :class="{'error' : feedbackError === 'messages'}"/></span>
         </li>
-        <li class="feedback-code">
+        <li class="tpl-feedback-code">
             <span>验证码</span>
             <span><input v-model="feedbackParams.verifyCode" @keyup.13="submitFeedback" :class="{'error' : feedbackError === 'verifyCode'}"/></span>
             <span><img :src="verifyCode" @click="setVerifyCode" ref="VERIFY_CODE"></span>
         </li>
-        <li class="feedback-operate">
+        <li class="tpl-feedback-operate">
             <button class="btn-primary" @click="submitFeedback">提交</button>
             <button class="btn-default" @click="resetFeedbackParams">重置</button>
         </li>
@@ -125,95 +125,6 @@ export default {
     }
 }
 </script>
-
 <style lang="scss" scoped>
-@import "../../style/param";
-.feedback-form {
-    li {
-        min-height: 50px;
-    }
-    li span {
-        display: inline-block;
-        vertical-align: middle;
-        &:first-of-type {
-            width: 80px;
-            padding-right: 20px;
-            text-align: right;
-        }
-        &:nth-of-type(2) {
-            width: calc(100% - 120px);
-            input {
-                width: 100%;
-                border: 0;
-                border-bottom: 1px solid $grey1;
-                background: none;
-                padding:  10px 5px;
-                color: $blue;
-                &:focus {
-                    border-color: $blue;
-                }
-                &.error {
-                    border-color: $red;
-                }
-            }
-        }
-    }
-    .feedback-mark {
-        margin-top: 20px;
-        textarea {
-            height: 100px;
-            width: 100%;
-            resize:none;
-            background: none;
-            border-color: $grey1;
-            padding: 10px;
-            &.error {
-                border-color: $red;
-            }
-        }
-    }
-    .feedback-code {
-        margin-top: 20px;
-        span:nth-of-type(2) {
-            width: 30%;
-        }
-        span:nth-of-type(3) {
-            vertical-align: bottom;
-            height: 40px;
-            width: 120px;
-            img {
-                height: 100%;
-                width: 100%;
-            }
-        }
-    }
-    .feedback-operate {
-        margin-top: 20px;
-        padding-left: 85px;
-    }
-}
-.btn-primary, .btn-default {
-    width: 30%;;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    margin-right: 20px;
-    font-weight: normal;
-}
-
-.btn-primary {
-    background: $blue;
-    color: $white;
-    &:active {
-        background: $bluelight;
-    }
-}
-
-.btn-default {
-    background: $grey1;
-    &:active {
-        background: $grey4;
-    }
-}
-
+@import '../../style/template/index.scss';
 </style>

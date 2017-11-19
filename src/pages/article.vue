@@ -47,9 +47,9 @@
             <template v-if="!listType">
                 <!-- 标题 -->
                 <div class="article-header">
-                    <h2 class="article-title">{{contentObj.title}}</h2>
+                    <h2 class="article-title"><span class="article-menu-name" v-if="contentId">{{currentNode.nodeName}}</span><span>{{contentObj.title}}</span></h2>
                     <h3 class="article-subtitle" v-if="contentId">{{contentObj.addDate}}</h3>
-                    <ul class="article-crumbs">
+                    <ul class="article-crumbs" v-if="!contentId">
                         <li>首页</li>
                         <li>{{firstNode.nodeName}}</li>
                         <li>{{secondNode.nodeName}}</li>
@@ -69,15 +69,16 @@
     import ContentList from '@/components/common/contentList'
     import LinkList from '@/components/common/linkList'
     import {API_GetContentByNodeId, API_GetContentById} from '@/fetch/restApi'
-    import templateCommon from '@/components/template/template'
+    import templateCommon from '@/components/template/js/index'
 
-    import WeChat from '@/components/template/wechat'
-    import History from '@/components/template/history'
-    import Card from '@/components/template/card'
-    import Common from '@/components/template/common'
-    import Enterprise from '@/components/template/enterprise'
-    import Honor from '@/components/template/honor'
-    import FeedBack from '@/components/template/feedBack'
+    // import WeChat from '@/components/template/wechat'
+    // import History from '@/components/template/history'
+    // import Card from '@/components/template/card'
+    // import Common from '@/components/template/common'
+    // import Enterprise from '@/components/template/enterprise'
+    // import Honor from '@/components/template/honor'
+    // import Feedback from '@/components/template/feedback'
+    // import Contact from '@/components/template/contact'
 
     export default {
         data() {
@@ -237,8 +238,8 @@
             },
             getArticle() {
                 this.loading = true
-                // this.contentDates = []
-                // this.subContentDate = {}
+                this.contentDates = []
+                this.subContentDate = {}
                 if (this.contentId) {
                     this.getContentById()
                 } else {
@@ -262,14 +263,15 @@
         components: {
             Left,
             ContentList,
-            WeChat,
             LinkList,
-            History,
-            Card,
-            Common,
-            Enterprise,
-            Honor,
-            FeedBack
+            // History,
+            // Card,
+            // Common,
+            // Enterprise,
+            // Honor,
+            // Feedback,
+            // Contact,
+            // WeChat,
         }
     }
 </script>
@@ -278,7 +280,7 @@
 .article-wrap {
     position: relative;
     display: inline-block;
-    margin-left: 50px;
+    padding-left: 50px;
     vertical-align: top;
     width: calc(100% - 360px);
     min-height: 600px;
@@ -316,6 +318,17 @@
     color: $dark;
     margin-top: 20px;
     margin-bottom: 20px;
+    & > span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+.article-menu-name {
+    font-size: 18px;
+    padding: 10px 30px;
+    margin-right: 30px;
+    background: $blue;
+    color: $white;
 }
 .article-crumbs {
     position: absolute;
@@ -340,8 +353,21 @@
     }
 }
 @media only screen and (max-width: 768px) {
+    .article-title {
+        font-size: 2.4rem;
+        margin-bottom: 10px;
+    }
+    .article-subtitle {
+        font-size: 1.2rem;
+    }
     .article-header {
         
+    }
+    .article-menu-name {
+        display: block;
+        margin-bottom: 5px;
+        padding: 8px 15px;
+        font-size: 1.4rem;
     }
     .article-wrap {
         padding: 0 30px;

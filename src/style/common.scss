@@ -42,6 +42,10 @@
     border-radius: 12px;
     display: inline-block;
 }
+// wrap
+.common-wrap {
+    margin: 2% 60px;
+}
 .video-wrap {
     position: relative;
     .video-controls {
@@ -69,7 +73,33 @@
     }
 }
 
+// button
+.btn-primary, .btn-default {
+    display: inline-block;
+    width: 30%;;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-right: 20px;
+    font-weight: normal;
+}
 
+.btn-primary {
+    background: $blue;
+    color: $white;
+    &:active {
+        background: $bluelight;
+    }
+}
+
+.btn-default {
+    background: $grey1;
+    &:active {
+        background: $grey4;
+    }
+}
+
+// backgroud
 .bg-blue {
     background: $blue;
 }
@@ -113,6 +143,9 @@
 /* el- 覆写 */
 
 @media only screen and (max-width: 768px) {
+    .common-wrap {
+        margin: 2% 30px;
+    }
     .section-wrap {
         margin-left: $miniblank;
     }
@@ -135,6 +168,9 @@
 
 }
 @media only screen and (min-width: 1200px) {
+    .common-wrap {
+        margin: 2% 80px;
+    }
     .section-wrap {
         margin-left: $baseblank;
     }

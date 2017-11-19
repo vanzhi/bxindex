@@ -50,3 +50,6 @@
         }
     }
 </script>
+<style lang="scss" scoped>
+@import '../../style/template/index.scss';
+</style>

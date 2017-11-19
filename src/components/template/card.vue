@@ -177,26 +177,10 @@ export default {
         }
     },
     mounted() {
-        // start
-        // (function(window, undefined) {
-        //     setTimeout(_ => {
-        //         let tabs = document.querySelectorAll('.cardTitle .tpl-title')
-        //         let groups = document.querySelectorAll('.cardGroup')
-        //         for (let i = 0; i < tabs.length; i ++) {
-        //             tabs[i].addEventListener('click', (evt) => {
-        //                 for (let k = 0; k < tabs.length; k ++) {
-        //                     tabs[k].style.color = 'inherit'
-        //                 }
-        //                 for (let j = 0; j < groups.length; j ++) {
-        //                     groups[j].style.display = 'none'
-        //                 }
-        //                 tabs[i].style.color = '#2D5891'
-        //                 groups[i].style.display = 'block'
-        //             })
-        //         }
-        //     }, 300)
-        // })(window, undefined)
-        // end
+        
     }
 }
 </script>
+<style lang="scss" scoped>
+@import '../../style/template/index.scss';
+</style>

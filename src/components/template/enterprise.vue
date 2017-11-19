@@ -49,7 +49,6 @@ export default {
     }
 }
 </script>
-<style lang="scss">
-@import "../../style/param";
-
+<style lang="scss" scoped>
+@import '../../style/template/index.scss';
 </style>

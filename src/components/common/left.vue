@@ -24,7 +24,7 @@
                     :key            ="item.nodeId" 
                     @click.native   ="menuVisible=false" 
                     tag             ="li" 
-                    :to             ="'/article/' + pNode.nodeId + '/' + item.nodeId" 
+                    :to             ="path(item)" 
                     :class          ="{'active' : currentNode.nodeId === item.nodeId}">
                     <span>{{item.nodeName}}</span>
                 </router-link>
@@ -60,6 +60,20 @@
             },
             headImg: {
                 type: [String]
+            },
+            root: {
+                type: [String],
+                default: 'article'
+            }
+        },
+        methods: {
+            path(item) {
+                let path = ['', this.root]
+                if (this.pNode.nodeId) {
+                    path.push(this.pNode.nodeId)
+                }
+                path.push(item.nodeId)
+                return path.join('/')
             }
         },
         mounted() {
