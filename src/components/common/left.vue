@@ -2,7 +2,7 @@
 <div class="left-wrap" :class="{'open' : menuVisible}">
     <div class="left-img-wrap">
         <div>
-            <img :src="currentNode.imageUrl">
+            <img :src="headImg || currentNode.imageUrl">
         </div>
     </div>
     <div class="left-level-second"><span>{{currentNode.nodeName}}</span><i class="iconfont icon-icon88" @click="menuVisible = !menuVisible"></i></div>
@@ -57,6 +57,9 @@
                 default: () => {
                     return {}
                 }
+            },
+            headImg: {
+                type: [String]
             }
         },
         mounted() {

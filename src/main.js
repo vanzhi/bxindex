@@ -7,6 +7,7 @@ import router from './router'
 import {Row, Col, Carousel, CarouselItem, Pagination, Loading} from 'element-ui'
 import AMap from 'vue-amap'
 import store from './store/store'
+import Common from '@/utils/common'
 import {API_GetMenuList} from './fetch/restApi'
 import 'normalize.css'
 import '@/style/fonts/iconfont.css'
@@ -28,11 +29,13 @@ AMap.initAMapApiLoader({
     plugin: ['AMap.ToolBar']
 });
 
-// router.beforeEach((to, from, each) => {
-
-// })
+router.afterEach((to, from) => {
+  // ...
+  window.screenTop = 0
+})
 
 Vue.config.productionTip = false
+Vue.prototype.$common = Common
 
 /* eslint-disable no-new */
 new Vue({

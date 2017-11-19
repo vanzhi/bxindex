@@ -1,8 +1,9 @@
 <template>
     <div :class="{'less' : this.menuList.length < 6}">
-        <Left :menuList="menuList" :currentNode="currentNode" :pNode="pNode" v-if="this.menuList.length"></Left><div class="article-wrap" v-loading="loading"> 
+        <!-- 如果文章内有imgUrl的话用其做头图，否则用二级菜单的节点的imgUrl做头图  :headImg="!listType && contentObj.imageUrl || ''" -->
+        <Left :menuList="menuList" :currentNode="secondNode" :pNode="firstNode" v-if="this.menuList.length"></Left><div class="article-wrap" v-loading="loading"> 
             <!-- 内容列表 -->
-            <template v-if="listType === 'content' && !contentObj.content">
+            <template v-if="listType === 'content'">
                 <!-- 标题 -->
                 <h2 class="article-title">{{currentNode.nodeName}}</h2>
                 <!-- 列表 -->
@@ -29,7 +30,7 @@
             </template>
 
             <!-- 分页 -->
-            <template v-if="listType && !contentObj.content">
+            <template v-if="listType">
                 <div class="article-main">
                     <el-pagination
                         small
@@ -43,15 +44,15 @@
             </template>
 
             <!-- 文本内容 -->
-            <template v-if="contentObj.content">
+            <template v-if="!listType">
                 <!-- 标题 -->
                 <div class="article-header">
                     <h2 class="article-title">{{contentObj.title}}</h2>
-                    <h3 class="article-subtitle" v-if="thirdNodeId">{{contentObj.addDate}}</h3>
+                    <h3 class="article-subtitle" v-if="contentId">{{contentObj.addDate}}</h3>
                     <ul class="article-crumbs">
                         <li>首页</li>
-                        <li>{{pNode.nodeName}}</li>
-                        <li>{{currentNode.nodeName}}</li>
+                        <li>{{firstNode.nodeName}}</li>
+                        <li>{{secondNode.nodeName}}</li>
                     </ul>
                 </div>
                 <!-- 内容 -->
@@ -67,7 +68,7 @@
     import Left from '@/components/common/left'
     import ContentList from '@/components/common/contentList'
     import LinkList from '@/components/common/linkList'
-    import {API_GetContentByNodeId} from '@/fetch/restApi'
+    import {API_GetContentByNodeId, API_GetContentById} from '@/fetch/restApi'
     import templateCommon from '@/components/template/template'
 
     import WeChat from '@/components/template/wechat'
@@ -76,11 +77,13 @@
     import Common from '@/components/template/common'
     import Enterprise from '@/components/template/enterprise'
     import Honor from '@/components/template/honor'
+    import FeedBack from '@/components/template/feedBack'
 
     export default {
         data() {
             return {
-                contentDate: null,
+                contentDates: [],
+                subContentDate: {},
                 pageNo: 0,
                 pageSize: 10,
                 total: 0,
@@ -93,23 +96,23 @@
                 // return 'Honor'
                 return {
                     ...templateCommon,
-                    template : '<div>' + this.contentObj.content + '</div>'
+                    template : '<div>' + (this.contentObj.content || '') + '</div>'
                 }
             },
             // 二级栏目菜单列表
             menuList() {
-                let list = this.$store.getters.firstLevelMenuListById[this.pNodeId] && this.$store.getters.firstLevelMenuListById[this.pNodeId].childs || []
+                let list = this.$store.getters.firstLevelMenuListById[this.firstNodeId] && this.$store.getters.firstLevelMenuListById[this.firstNodeId].childs || []
                 return list
             },
-            // 二级栏目链接类型
+            // 当前栏目链接类型
             linkType() {
                 return this.currentNode.linkType
             },
-            // 链接类型
+            // 链接类型 [link, content, '']  ['链接列表', '内容列表', '非列表']
             listType() {
                 let type = ''
-                if (this.linkType === 'LinkNoRelatedToChannelAndContent' && this.contentDate) {
-                    if (this.contentDate.data[0] && this.contentDate.data[0].linkUrl) {
+                if (this.linkType === 'LinkNoRelatedToChannelAndContent' && !this.contentId) {
+                    if (this.contentDates[0] && this.contentDates[0].linkUrl) {
                         type = 'link'
                     } else {
                         type = 'content'
@@ -117,43 +120,63 @@
                 }
                 return type
             },
-            // 内容对象列表
+            // 列表
             contentList() {
-                let list = this.contentDate && this.contentDate.data || []
+                let list = this.contentDates
                 return list
             },
-            // 内容对象列表-id
-            contentListById() {
-                let list = this.contentList
-                let obj = {}
-                for (let i = 0; i < list.length; i ++) {
-                    obj[list[i].id] = list[i]
-                }
-                return obj
-            },
-            // 内容对象
+            // 内容
             contentObj() {
-                if (!this.listType) {
-                    return this.contentDate && this.contentDate.data[0] || {}
+                if (this.contentId) {
+                    return this.subContentDate
                 }
-                if (this.thirdNodeId) {
-                    return this.contentListById[this.thirdNodeId]
-                }
-                return {}
+                // 默认第一条内容
+                return this.contentDates[0] || {}
             },
+            // 当前节点
             currentNode() {
-                return this.secondLevelMenuListById[this.currentNodeId] || {}
+                // todo-增加当前菜单非二级菜单的情况
+                if (this.currentNodeId === this.secondNodeId) {
+                    return this.secondNode
+                }
             },
-            pNode() {
-                return this.firstLevelMenuListById[this.pNodeId] || {}
+            // 二级菜单节点
+            secondNode() {
+                return this.secondLevelMenuListById[this.secondNodeId] || {}
             },
-            // 三级菜单id
-            thirdNodeId() {
+            // 一级菜单节点
+            firstNode() {
+                return this.firstLevelMenuListById[this.firstNodeId] || {}
+            },
+            // 列表内容id
+            contentId() {
+                let id = this.$route.query.contentid || this.$common.getUrlParam('contentid') * 1
+                return id || undefined
+            },
+            // 当前菜单id
+            currentNodeId() {
                 let path = this.$route.params.nodepath ? this.$route.params.nodepath.split('/') : []
-                return path[2] * 1 || 0
+                let nodeId = 0
+                if (path.length > 2) {
+                    nodeId = path[path.length - 1] * 1
+                } else if (path.length > 0) {
+                    return this.secondNodeId
+                }
+                return nodeId
+            },
+            // 父节点id
+            pNodeId() {
+                let path = this.$route.params.nodepath ? this.$route.params.nodepath.split('/') : []
+                let nodeId = 0
+                if (path.length > 2) {
+                    nodeId = path[path.length - 2] * 1
+                } else if (path.length > 0) {
+                    return this.firstNodeId
+                }
+                return nodeId
             },
             // 二级菜单id
-            currentNodeId() {
+            secondNodeId() {
                 let path = this.$route.params.nodepath ? this.$route.params.nodepath.split('/') : []
                 let nodeId = 0
                 if (path.length > 1) {
@@ -166,33 +189,61 @@
                 return nodeId
             },
             // 一级菜单id
-            pNodeId() {
+            firstNodeId() {
                 let path = this.$route.params.nodepath ? this.$route.params.nodepath.split('/') : []
-                return path[0] * 1 || 0
+                let nodeId = 0
+                if (path.length > 0) {
+                    nodeId = path[0] * 1
+                }
+                return nodeId
             }
         },
         watch: {
-            currentNodeId : function(val) {
+            currentNodeId(val) {
                 if (!val) return
                 this.pageNo = 0
-                this.getArticleByNodeId()
+                this.getArticle()
+            },
+            contentId() {
+                this.pageNo = 0
+                this.getArticle()
             }
         },
         methods: {
             getArticleByNodeId() {
-                this.loading = true
-                this.contentDate = null
                 API_GetContentByNodeId({
                     nodeId: this.currentNodeId,
                     pageSize: this.pageSize,
                     pageNo: this.pageNo
                 }).then(success => {
                     this.loading = false
-                    this.contentDate = success.data
-                    this.total = this.contentDate.totalCount
+                    this.total = success.data.totalCount
+                    // 内容/列表
+                    this.contentDates = success.data.data || []
                 }).catch(error => {
                     this.loading = false
                 })
+            },
+            getContentById() {
+                API_GetContentById({
+                    contentId: this.contentId
+                }).then(success => {
+                    this.loading = false
+                    // 内容
+                    this.subContentDate = success.data
+                }).catch(error => {
+                    this.loading = false
+                })
+            },
+            getArticle() {
+                this.loading = true
+                // this.contentDates = []
+                // this.subContentDate = {}
+                if (this.contentId) {
+                    this.getContentById()
+                } else {
+                    this.getArticleByNodeId()
+                }
             },
             currentChange(pageNo) {
                 this.pageNo = pageNo - 1
@@ -202,7 +253,7 @@
                 // 路由改变，刷新页面
                 this.pageNo = 0
                 this.total = 0
-                this.getArticleByNodeId()
+                this.getArticle()
             },
         },
         created() {
@@ -217,7 +268,8 @@
             Card,
             Common,
             Enterprise,
-            Honor
+            Honor,
+            FeedBack
         }
     }
 </script>

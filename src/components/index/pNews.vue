@@ -5,26 +5,6 @@
         <div class="list-wrap">
             <ul class="info-list">
                 <Content-List :currentNode="secondLevelMenuListById[42]" v-for="(item, index) in newsList" :item="item" :key="index"></Content-List>
-                <!--
-                <router-link tag="li" :to="'/article/41/42/' + item.id" class="item" v-for="(item, index) in newsList" :key="index">
-                    <div class="whole fn-clear">
-                        <div class="part left">
-                            <img :src="news1">
-                        </div>
-                        <div class="part right">
-                            <div>
-                                <span class="label-primary">公司新闻</span>
-                                <p>
-                                    {{item.title}}
-                                </p>
-                                <span class="time">
-                                    {{item.addDate.split(' ')[0].replace(/\-+/g, '.')}}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </router-link>
-                -->
                 <router-link tag="li" to="/article/41/42" class="last">
                     <div class="content">
                         <p>
@@ -37,7 +17,7 @@
 
             <el-carousel ref="newsSlide" indicator-position="none" :autoplay="false" arrow="never" class="info-list-move" v-Move="move">
                 <el-carousel-item v-for="(item, index) in newsList" v-if="index < 6" :key="index" class="item">
-                    <router-link tag="div" :to="'/article/41/42/' + item.id" class="whole fn-clear">
+                    <router-link tag="div" :to="'/article/41/42?contentid=' + item.id" class="whole fn-clear">
                         <div class="part left">
                             <img :src="item.imageUrl ? item.imageUrl : news1">
                         </div>

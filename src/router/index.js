@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import index from '@/pages/index'
 import article from '@/pages/article'
 import search from '@/pages/search'
+import feedbackSuccess from '@/pages/feedbackSuccess'
 
 Vue.use(Router)
 
@@ -21,6 +22,10 @@ export default new Router({
       path: '/search',
       name: 'search',
       component: search
+    }, {
+      path: '/feedbackSuccess',
+      name: 'feedbackSuccess',
+      component: feedbackSuccess
     }, {
       path: '*',
       redirect: '/index'

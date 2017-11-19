@@ -81,3 +81,23 @@ export const API_GetContentByNodeId = (params) => {
 export const API_GetSearchResult = (params) => {
     return fetchRequest('/content/search', params, 'POST')
 }
+
+// 查询子栏目
+export const API_GetChildNode = (params) => {
+    return fetchRequest('/node/list', params, 'POST')
+}
+
+// 查询内容
+export const API_GetContentById = (params) => {
+    return fetchRequest(['/content', params.contentId].join('/'), '', 'GET', false)
+}
+
+// 获取验证码内容
+export const API_GetVerifyCode = (params) => {
+    return fetchRequest('/feedback/verifycode', params, 'GET', false)
+}
+
+// 提交信息反馈
+export const API_AddFeedback = (params) => {
+    return fetchRequest('/feedback/add', params, 'POST')
+}

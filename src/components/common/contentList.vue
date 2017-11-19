@@ -1,5 +1,5 @@
 <template>
-    <router-link tag="li" :to="'/article/' + currentNode.parentId + '/' + currentNode.nodeId + '/' + item.id" class="item">
+    <router-link tag="li" :to="path" class="item">
         <div class="whole fn-clear">
             <div class="part left">
                 <img :src="item.imageUrl ? item.imageUrl : news1">
@@ -35,9 +35,21 @@ export default {
        currentNode: {
            type: Object,
            default: () => {return {}}
-       }
+       },
    },
    computed: {
+       path() {
+           let path = '/article/' + this.currentNode.parentId + '/' + this.currentNode.nodeId
+            // 如果item不存在，则为内容
+           if (!this.item.linkType) {
+               path += '?contentid=' + this.item.id
+           } else {
+               path += '/' + this.item.nodeId
+           }
+           return path
+       }
+   },
+   mounted() {
        
    }
 }

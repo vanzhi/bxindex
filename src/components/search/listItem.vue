@@ -37,6 +37,7 @@ export default {
         },
         path() {
             let link = ['article']
+            let last = this.parentNodes.length - 1
             // 一般认为有linkurl就是打开新的外部链接非内容页面
             if (this.item.linkUrl) {
                 return this.item.linkUrl
@@ -45,11 +46,12 @@ export default {
                 if (i === 0) continue
                 link.push(this.parentNodes[i].nodeId)
             }
-            // this.parentNodes[2].nodeId !== this.item.nodeId 为三级内容，否则为二级内容或链接，但链接已经排除了
-            if (this.parentNodes[2] && this.parentNodes[2].nodeId !== this.item.nodeId) {
-                link.push(this.parentNodes[2].id)
+            let linkuUrl = link.join('/')
+            // 文章内容
+            if (this.parentNodes[last].linkType === 'LinkNoRelatedToChannelAndContent') {
+                linkuUrl += '?contentid=' + this.item.id
             }
-            return link.join('/')
+            return linkuUrl
         }
     }
 }

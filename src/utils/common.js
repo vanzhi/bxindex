@@ -30,8 +30,24 @@ export const setScrollTop = (top) => {
     _INTERVALLIST['setScrollTop'].push(interval);
 }
 
+export const getUrlParam = (paramStr) => {
+    let params = window.location.href.split('?')[1] || ''
+    paramStr = paramStr.toLowerCase()
+    if (params) {
+        let p = params.split('&')
+        for (let i = 0; i < p.length; i ++) {
+            let arg = p[i].split('=')
+            if (arg[0].toLowerCase() === paramStr) {
+                return arg[1]
+            }
+        }
+    }
+    return undefined
+}
+
 const common = {
-    setScrollTop
+    setScrollTop,
+    getUrlParam
 }
 
 export default common
