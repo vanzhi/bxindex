@@ -28,12 +28,12 @@
         </li>
         <li class="tpl-feedback-code">
             <span>验证码</span>
-            <span><input v-model="feedbackParams.verifyCode" @keyup.13="submitFeedback" :class="{'error' : feedbackError === 'verifyCode'}"/></span>
-            <span><img :src="verifyCode" @click="setVerifyCode" ref="VERIFY_CODE"></span>
+            <span><input v-model="feedbackParams.verifyCode" v-on:eyup.13="submitFeedback" :class="{'error' : feedbackError === 'verifyCode'}"/></span>
+            <span><img :src="verifyCode" v-on:click="setVerifyCode" ref="VERIFY_CODE"></span>
         </li>
         <li class="tpl-feedback-operate">
-            <button class="btn-primary" @click="submitFeedback">提交</button>
-            <button class="btn-default" @click="resetFeedbackParams">重置</button>
+            <button class="btn-primary" v-on:click="submitFeedback">提交</button>
+            <button class="btn-default" v-on:click="resetFeedbackParams">重置</button>
         </li>
     </ul>
 </div>
