@@ -48,12 +48,12 @@
     </section>
 </template>
 <script>
-import slider1 from '@/images/1.png'
-import slider2 from '@/images/2.png'
-import slider3 from '@/images/3.png'
-import slider4 from '@/images/4.png'
-import slider5 from '@/images/5.png'
-import slider6 from '@/images/6.png'
+import slider1 from '@/images/1.jpg'
+import slider2 from '@/images/2.jpg'
+import slider3 from '@/images/3.jpg'
+import slider4 from '@/images/4.jpg'
+import slider5 from '@/images/5.jpg'
+import slider6 from '@/images/6.jpg'
 export default {
     data() {
         return {
@@ -63,42 +63,42 @@ export default {
                 desc    : '企业文化',
                 // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
                 // content : '内容信息',
-                imgurl  : slider6,
+                imgurl  : slider1,
                 class   : 'bg-1'
             }, {
                 title   : '稳定盈利｜备受尊敬',
                 desc    : '打造一个智慧服务企业',
                 // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
                 // content : '内容信息',
-                imgurl  : slider1,
+                imgurl  : slider2,
                 class   : 'bg-2'
             }, {
                 title   : '智慧制造｜智慧城市',
                 desc    : '聚焦两个核心业务',
                 // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
                 // content : '内容信息',
-                imgurl  : slider2,
+                imgurl  : slider3,
                 class   : 'bg-3'
             }, {
-                title   : '云计算服务｜工业大数据｜金融软件｜金融服务',
+                title   : '云计算服务｜工业大数据｜金融软件 + 服务',
                 desc    : '培育三个新的业务方向',
                 // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
                 // content : '内容信息',
-                imgurl  : slider3,
+                imgurl  : slider4,
                 class   : 'bg-4'
             }, {
                 title   : 'IDC｜无人化｜物联网｜智能交通',
                 desc    : '发展四个战略业务',
                 // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
                 // content : '内容信息',
-                imgurl  : slider4,
+                imgurl  : slider5,
                 class   : 'bg-5'
             }, {
                 title   : '信息化｜自动化｜信息服务｜智能化｜机电一体化',
                 desc    : '优化构成核心竞争力的五大传统业务',
                 // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
                 // content : '内容信息',
-                imgurl  : slider5,
+                imgurl  : slider6,
                 class   : 'bg-6'
             }],
             activeIndex : 0
@@ -245,7 +245,7 @@ export default {
         width: 90px;
     }
     .bg-6 {
-        background: #5411b0;
+        background: #d5472f;
         .count, .content h3 {
             color: #ffca13;
         }
@@ -254,12 +254,12 @@ export default {
         }
     }
     .bg-5 {
-        background: #0093cb;
+        background: #00a867;
         .count, .content h3 {
-            color: #d2df32;
+            color: #ffe41e;
         }
         .dot.active {
-            background: #d2df32;
+            background: #ffe41e;
         }
     }
     .bg-4 {
@@ -272,7 +272,7 @@ export default {
         }
     }
     .bg-3 {
-        background: #4b30d1;
+        background: #0c2fc5;
         .count, .content h3 {
             color: #ffca13;
         }

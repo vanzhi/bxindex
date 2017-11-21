@@ -1,6 +1,6 @@
 <template>
     <section class="section-wrap">
-        <c-title title="核心竞争" engTitle="Core Competence"></c-title>
+        <c-title title="核心能力" engTitle="Core Competence"></c-title>
         <ul class="core-list" :style="{left: -left + 'px'}">
             <li v-for="(item, index) in coreList" :key="index">
                 <div class="core-logo"><i :class="'ic icon-core-' + (index + 1)"></i></div><div class="core-content">
@@ -40,7 +40,7 @@ export default {
             }, {
                 title: '助力中国传统产业“两化”深度融合能力',
                 content: '凭借两化融合领域的深厚积累，公司以宝钢为 依托，积极探索构建智能工厂和智慧制造，所策划践行的工业 4.0 解决方案、工业机器人、无人化物流管控等产品陆续投入应用，不断提升中国制造企业转型升级的服务能力，继续保持了工业软件相关领域的领军地位。'
-            }]
+            }],
         }
     },
     methods: {
@@ -72,43 +72,43 @@ export default {
     background-repeat: no-repeat;
     transition: all 0.3s;
     &.icon-core-1 {
-        height: 91px;
-        width: 99px;
-        background-image: url(../../images/i1.png);
+        height: 84px;
+        width: 83px;
+        background-image: url(../../svg/1.svg);
         .core-list li:hover & {
-            background-image: url(../../images/c1.png);
+            background-image: url(../../svg/11.svg);
         }
     }
     &.icon-core-2 {
-        height: 100px;
-        width: 89px;
-        background-image: url(../../images/i2.png);
+        height: 96px;
+        width: 95px;
+        background-image: url(../../svg/2.svg);
         .core-list li:hover & {
-            background-image: url(../../images/c2.png);
+            background-image: url(../../svg/22.svg);
         }
     }
     &.icon-core-3 {
-        height: 100px;
-        width: 100px;
-        background-image: url(../../images/i3.png);
+        height: 85px;
+        width: 85px;
+        background-image: url(../../svg/3.svg);
         .core-list li:hover & {
-            background-image: url(../../images/c3.png);
+            background-image: url(../../svg/33.svg);
         }
     }
     &.icon-core-4 {
         height: 96px;
         width: 83px;
-        background-image: url(../../images/i4.png);
+        background-image: url(../../svg/4.svg);
         .core-list li:hover & {
-            background-image: url(../../images/c4.png);
+            background-image: url(../../svg/44.svg);
         }
     }
     &.icon-core-5 {
-        height: 98px;
-        width: 88px;
-        background-image: url(../../images/i5.png);
+        height: 77px;
+        width: 94px;
+        background-image: url(../../svg/5.svg);
         .core-list li:hover & {
-            background-image: url(../../images/c5.png);
+            background-image: url(../../svg/55.svg);
         }
     }
 }
@@ -147,7 +147,7 @@ export default {
         &:hover {
             box-shadow: 0 0 0 1px $blue;
             background: $white;
-            h3 {
+            h3, p {
                 color: $blue;
             }
         }
