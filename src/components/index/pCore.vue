@@ -113,7 +113,7 @@ export default {
     }
 }
 .core-logo {
-    height: 200px;
+    height: 150px;
     text-align: center;
     .ic {
         vertical-align: top;
@@ -133,7 +133,7 @@ export default {
         cursor: pointer;
         transition: all 0.3s;
         vertical-align: top;
-        height: 520px;
+        height: 450px;
         h3 {
             font-size: 2.4rem;
             font-weight: normal;

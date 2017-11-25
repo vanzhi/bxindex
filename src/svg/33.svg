@@ -1,95 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 3384.6 2520" style="enable-background:new 0 0 3384.6 2520;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#3F548B;}
-	.st1{clip-path:url(#SVGID_2_);fill:none;stroke:#3F548B;stroke-width:2;stroke-miterlimit:10;}
-	.st2{clip-path:url(#SVGID_4_);fill:#3F548B;}
-	.st3{clip-path:url(#SVGID_6_);fill:#3F548B;}
-	.st4{clip-path:url(#SVGID_8_);fill:#3F548B;}
-	.st5{clip-path:url(#SVGID_10_);fill:#3F548B;}
-	.st6{fill:#F4F4F4;}
-	.st7{clip-path:url(#SVGID_12_);fill:none;stroke:#3F548B;stroke-width:2;stroke-miterlimit:10;}
-	.st8{clip-path:url(#SVGID_14_);fill:none;stroke:#3F548B;stroke-width:2;stroke-miterlimit:10;}
-	.st9{clip-path:url(#SVGID_16_);fill:none;stroke:#3F548B;stroke-width:2;stroke-miterlimit:10;}
-</style>
-<g>
-	<polygon class="st0" points="1678,1218 1705,1218 1705,1245 1678,1245 1678,1218 	"/>
-	<g>
-		<defs>
-			<rect id="SVGID_1_" x="1678" y="1218" width="27" height="27"/>
-		</defs>
-		<clipPath id="SVGID_2_">
-			<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
-		</clipPath>
-		<polygon class="st1" points="1678,1218 1705,1218 1705,1245 1678,1245 1678,1218 		"/>
-	</g>
-	<g>
-		<defs>
-			<rect id="SVGID_3_" x="1691" y="1245" width="1" height="42"/>
-		</defs>
-		<clipPath id="SVGID_4_">
-			<use xlink:href="#SVGID_3_"  style="overflow:visible;"/>
-		</clipPath>
-		<rect x="1686" y="1240" class="st2" width="11" height="52"/>
-	</g>
-	<g>
-		<defs>
-			<rect id="SVGID_5_" x="1657" y="1268" width="1" height="19"/>
-		</defs>
-		<clipPath id="SVGID_6_">
-			<use xlink:href="#SVGID_5_"  style="overflow:visible;"/>
-		</clipPath>
-		<rect x="1652" y="1263" class="st3" width="11" height="29"/>
-	</g>
-	<g>
-		<defs>
-			<rect id="SVGID_7_" x="1725" y="1268" width="1" height="19"/>
-		</defs>
-		<clipPath id="SVGID_8_">
-			<use xlink:href="#SVGID_7_"  style="overflow:visible;"/>
-		</clipPath>
-		<rect x="1720" y="1263" class="st4" width="11" height="29"/>
-	</g>
-	<g>
-		<defs>
-			<rect id="SVGID_9_" x="1657" y="1268" width="69" height="1"/>
-		</defs>
-		<clipPath id="SVGID_10_">
-			<use xlink:href="#SVGID_9_"  style="overflow:visible;"/>
-		</clipPath>
-		<rect x="1652" y="1263" class="st5" width="79" height="11"/>
-	</g>
-	<polygon class="st6" points="1683,1286 1700,1286 1700,1303 1683,1303 1683,1286 	"/>
-	<g>
-		<defs>
-			<rect id="SVGID_11_" x="1683" y="1286" width="17" height="17"/>
-		</defs>
-		<clipPath id="SVGID_12_">
-			<use xlink:href="#SVGID_11_"  style="overflow:visible;"/>
-		</clipPath>
-		<polygon class="st7" points="1683,1286 1700,1286 1700,1303 1683,1303 1683,1286 		"/>
-	</g>
-	<polygon class="st6" points="1649,1286 1666,1286 1666,1303 1649,1303 1649,1286 	"/>
-	<g>
-		<defs>
-			<rect id="SVGID_13_" x="1649" y="1286" width="17" height="17"/>
-		</defs>
-		<clipPath id="SVGID_14_">
-			<use xlink:href="#SVGID_13_"  style="overflow:visible;"/>
-		</clipPath>
-		<polygon class="st8" points="1649,1286 1666,1286 1666,1303 1649,1303 1649,1286 		"/>
-	</g>
-	<polygon class="st6" points="1717,1286 1734,1286 1734,1303 1717,1303 1717,1286 	"/>
-	<g>
-		<defs>
-			<rect id="SVGID_15_" x="1717" y="1286" width="17" height="17"/>
-		</defs>
-		<clipPath id="SVGID_16_">
-			<use xlink:href="#SVGID_15_"  style="overflow:visible;"/>
-		</clipPath>
-		<polygon class="st9" points="1717,1286 1734,1286 1734,1303 1717,1303 1717,1286 		"/>
-	</g>
-</g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="85px" height="85px" viewBox="0 0 85 85" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>33</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="29" y="0" width="27" height="27"></rect>
+        <rect id="path-2" x="34" y="68" width="17" height="17"></rect>
+        <rect id="path-3" x="0" y="68" width="17" height="17"></rect>
+        <rect id="path-4" x="68" y="68" width="17" height="17"></rect>
+    </defs>
+    <g id="web设计图" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1920首页-copy" transform="translate(-546.000000, -1826.000000)">
+            <g id="33" transform="translate(546.000000, 1826.000000)">
+                <g id="Rectangle-33">
+                    <use fill="#2D5891" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#2D5891" stroke-width="1" x="29.5" y="0.5" width="26" height="26"></rect>
+                </g>
+                <rect id="Rectangle-12" fill="#2D5891" x="42" y="27" width="1" height="42"></rect>
+                <rect id="Rectangle-12-Copy" fill="#2D5891" x="8" y="50" width="1" height="19"></rect>
+                <rect id="Rectangle-12-Copy-2" fill="#2D5891" x="76" y="50" width="1" height="19"></rect>
+                <rect id="Rectangle-12" fill="#2D5891" transform="translate(42.500000, 50.500000) rotate(-270.000000) translate(-42.500000, -50.500000) " x="42" y="16" width="1" height="69"></rect>
+                <g id="Rectangle-33-Copy">
+                    <use fill="#F7F7F7" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <rect stroke="#2D5891" stroke-width="1" x="34.5" y="68.5" width="16" height="16"></rect>
+                </g>
+                <g id="Rectangle-33-Copy-3">
+                    <use fill="#F7F7F7" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    <rect stroke="#2D5891" stroke-width="1" x="0.5" y="68.5" width="16" height="16"></rect>
+                </g>
+                <g id="Rectangle-33-Copy-2">
+                    <use fill="#F7F7F7" fill-rule="evenodd" xlink:href="#path-4"></use>
+                    <rect stroke="#2D5891" stroke-width="1" x="68.5" y="68.5" width="16" height="16"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
 </svg>
