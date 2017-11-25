@@ -104,5 +104,5 @@ export const API_AddFeedback = (params) => {
 
 // 查询节点信息
 export const API_GetNodeDetail = (params) => {
-    return fetchRequest('/node/' + params.nodeId + '/list', , 'GET')
+    return fetchRequest('/node/' + params.nodeId + '/list', '', 'GET')
 }
