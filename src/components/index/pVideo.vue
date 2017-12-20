@@ -1,7 +1,7 @@
 <template>
     <div>
         <section class="section-wrap-2">
-            <c-title title="视频介绍" engTitle="Video"></c-title>
+            <c-title title="公司视频" engTitle="Video"></c-title>
             <div class="video-wrap">
                 <video :src="videoUrl" id="videoPlayer" loop controls></video>
                 <!-- <div class="video-controls">

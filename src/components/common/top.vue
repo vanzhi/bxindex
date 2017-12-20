@@ -30,7 +30,8 @@
             <li class="li2 fn-clear">
                 <div class="menus fn-clear">
                     <template v-if="$store.getters.firstLevelMenuList.length > 0" >
-                        <router-link @click.native="open=false" :class="{'active' : currentNodeId === item.nodeId}" v-if="index < 6" :to="'/article/' + item.nodeId" v-for="(item, index) in $store.getters.firstLevelMenuList" :key="item.nodeId">{{item.nodeName}}</router-link>
+                        <router-link @click.native="open=false" :class="{'active' : currentNodeId === item.nodeId}" v-if="index < 6 && !item.linkUrl" :to="'/article/' + item.nodeId" v-for="(item, index) in $store.getters.firstLevelMenuList" :key="item.nodeId">{{item.nodeName}}</router-link>
+                        <a v-else-if="item.linkUrl" :href="item.linkUrl" target="_blank">{{item.nodeName}}</a>
                     </template>
                 </div>
 

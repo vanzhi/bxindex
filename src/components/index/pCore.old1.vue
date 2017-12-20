@@ -9,6 +9,14 @@
                 </div>
             </li>
         </ul>
+        <div class="core-operate-wrap">
+            <a @click="prev">
+                <i class="iconfont icon-jiantoufuben1"></i>
+            </a>
+            <a @click="next">
+                <i class="iconfont icon-jiantoufuben"></i>
+            </a>
+        </div>
     </section>
 </template>
 <script>
@@ -36,7 +44,16 @@ export default {
         }
     },
     methods: {
-        
+        next() {
+            if (this.left < 370 * (this.coreList.length - 2)) {
+                this.left += 370;
+            }
+        },
+        prev() {
+            if (this.left > 0) {
+                this.left -= 370;
+            }
+        }
     },
     components: {
         cTitle
@@ -105,8 +122,8 @@ export default {
 .core-list {
     position: relative;
     margin-left: -50px;
+    white-space: nowrap;
     transition: left 0.3s;
-    // text-align: center;
     li {
         display: inline-block;
         margin: 1px;
@@ -117,7 +134,6 @@ export default {
         transition: all 0.3s;
         vertical-align: top;
         height: 450px;
-        text-align: left;
         h3 {
             font-size: 2.4rem;
             font-weight: normal;
@@ -137,7 +153,32 @@ export default {
         }
     }
 }
+.core-operate-wrap {
+    position: absolute;
+    top: 30px;
+    right: 60px;
+    user-select: none;
+    a {
+        margin-left: 10px;
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        background: $white;
+        line-height: 40px;
+        text-align: center;
+        font-weight: bold;
+        border: 1px solid $grey1;
+        &:active {
+            background: $blue;
+            color: $white;
+            border-color: $blue;
+        }
+    }
+}
 @media only screen and (max-width: 768px) {
+    .core-operate-wrap {
+        display: none;
+    }
     .core-list {
         margin: 0;
         white-space: normal;
@@ -184,15 +225,23 @@ export default {
     }
 }
 @media only screen and (min-width: 768px) {
-    
+    .core-operate-wrap {
+        display: block;
+    }
 }
 @media only screen and (min-width: 992px) {
-    
+    .core-operate-wrap {
+        display: block;
+    }
 }   
 @media only screen and (min-width: 1200px) {
-    
+    .core-operate-wrap {
+        display: block;
+    }
 }
 @media only screen and (min-width: 1800px) {
-    
+    .core-operate-wrap {
+        display: none;
+    }
 }
 </style>

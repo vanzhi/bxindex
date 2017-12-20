@@ -1,27 +1,14 @@
 <template>
     <div class="map-wrap">
-        <div>
-            <el-amap vid="amap1" :zoom="zoom" :center="center" :scrollWheel="false" :plugin="plugin" :amapManager="amapManager">
-                <el-amap-marker :position="marker.position"></el-amap-marker>
-            </el-amap>
-        </div>
+        <img :src="map">
     </div>
 </template>
 <script>
-import VueAMap from 'vue-amap';
+import map from '@/images/map.jpg'
 export default {
     data() {
-        let pos = [121.598593, 31.211164];
-        let amapManager = new VueAMap.AMapManager();
         return {
-            zoom: 14,
-            center: pos,
-            marker: {
-                position: pos,
-                draggable: true
-            },
-            plugin: ['ToolBar'],
-            amapManager
+            map
         }
     }
 }
@@ -29,18 +16,11 @@ export default {
 <style lang="scss" scope>
 @import '../../style/param';
 .map-wrap {
-    position: relative;
-    padding: 18% 0;
-    background: $white;
+    font-size: 0;
     margin-top: 40px;
-    & > * {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-    & > div {
-        height: 100%;
+    img {
         width: 100%;
+        height: auto;
     }
 }
 @media only screen and (max-width: 768px) {

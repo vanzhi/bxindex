@@ -1,8 +1,8 @@
 <template>
     <div>
         <p-banner></p-banner>
-        <p-core></p-core>
         <p-news></p-news>
+        <p-core></p-core>
         <p-video></p-video>
         <p-books></p-books>
         <p-map></p-map>

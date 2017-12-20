@@ -1,365 +1,59 @@
 <template>
     <section class="banner">
-        <div class="fn-clear">
-            <div class="banner-left">
-                <div class="img-wrap">
-                    <el-carousel 
-                        ref                 ="imgSlider"
-                        indicator-position  ="none"
-                        arrow               ="never"
-                        @change             ="bannerChnge"
-                        :interval           ="8000"
-                        :autoplay           ="autoPlayed"
-                        class               ="img">
-                        <el-carousel-item v-for="(s, i) in sliders" :key="i">
-                            <img :src="s.imgurl">
-                        </el-carousel-item>
-                    </el-carousel>
-                </div>
-                <a class="left-arrow" @click="$refs.imgSlider.prev()"><i class="iconfont icon-jiantoufuben1"></i></a>
-                <a class="right-arrow" @click="$refs.imgSlider.next()"><i class="iconfont icon-jiantoufuben"></i></a>
-            </div>
-            <div class="banner-right" :class="sliders[activeIndex].class">
-                    <template v-for="(s, i) in sliders">
-                        <transition name="move" :key="i">
-                            <div class="content" v-show="activeIndex === i">
-                                <h4 v-if="s.desc" class="fn-ff-light desc">{{s.desc}}</h4>
-                                <h4 v-if="s.intro" class="fn-ff-light">{{s.intro}}</h4>
-                                <p  v-if="s.content">{{s.content}}</p>
-                                <h3 v-if="s.title" class="title">{{s.title}}</h3>
-                            </div>
-                        </transition>
-                    </template>
-                <div class="bottom">
-                    <div class="flex-middle">
-                        <div class="count-wrap">
-                            <span class="count">0</span><br/>
-                            <span class="count">{{activeIndex + 1}}</span>
-                            <span>|</span>
-                            <span>{{'0' + sliders.length}}</span>
-                        </div>
-                        <div>
-                            <span v-for="(s, i) in sliders" :key="i" class="dot" :class="{'active' : activeIndex === i}" @mouseenter="enterDote(i)" @mousemove="enterDote(i)" @mouseleave="leaveDote"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="img-wrap">
+            <el-carousel 
+                ref                 ="imgSlider"
+                :interval           ="8000"
+                class               ="img">
+                <el-carousel-item v-for="(s, i) in sliders" :key="i">
+                    <img :src="s">
+                </el-carousel-item>
+            </el-carousel>
         </div>
     </section>
 </template>
 <script>
-import slider1 from '@/images/1.jpg'
-import slider2 from '@/images/2.jpg'
-import slider3 from '@/images/3.jpg'
-import slider4 from '@/images/4.jpg'
-import slider5 from '@/images/5.jpg'
-import slider6 from '@/images/6.jpg'
+import slider1 from '@/images/banner1.jpg'
+import slider2 from '@/images/banner2.jpg'
+import slider3 from '@/images/banner3.jpg'
+import slider4 from '@/images/banner4.jpg'
+import slider5 from '@/images/banner5.jpg'
+import slider6 from '@/images/banner6.jpg'
 export default {
     data() {
         return {
-            autoPlayed : true,
-            sliders : [{
-                title   : '愿景｜使命｜核心价值',
-                desc    : '企业文化',
-                // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
-                // content : '内容信息',
-                imgurl  : slider1,
-                class   : 'bg-1'
-            }, {
-                title   : '稳定盈利｜备受尊敬',
-                desc    : '打造一个智慧服务企业',
-                // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
-                // content : '内容信息',
-                imgurl  : slider2,
-                class   : 'bg-2'
-            }, {
-                title   : '智慧制造｜智慧城市',
-                desc    : '聚焦两个核心业务',
-                // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
-                // content : '内容信息',
-                imgurl  : slider3,
-                class   : 'bg-3'
-            }, {
-                title   : '云计算服务｜工业大数据｜金融软件 + 服务',
-                desc    : '培育三个新的业务方向',
-                // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
-                // content : '内容信息',
-                imgurl  : slider4,
-                class   : 'bg-4'
-            }, {
-                title   : 'IDC｜无人化｜物联网｜智能交通',
-                desc    : '发展四个战略业务',
-                // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
-                // content : '内容信息',
-                imgurl  : slider5,
-                class   : 'bg-5'
-            }, {
-                title   : '信息化｜自动化｜信息服务｜智能化｜机电一体化',
-                desc    : '优化构成核心竞争力的五大传统业务',
-                // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
-                // content : '内容信息',
-                imgurl  : slider6,
-                class   : 'bg-6'
-            }],
-            activeIndex : 0
+            sliders: [slider1, slider2, slider3, slider4, slider5, slider6]
         }
     },
     methods: {
-        bannerChnge(i) {
-            this.activeIndex = i;
-        },
-        enterDote(i) {
-            this.autoPlayed = false
-            this.$refs.imgSlider.setActiveItem(i)
-        },
-        leaveDote() {
-            this.autoPlayed = true
-        }
+        
     }
 }
 </script>
 <style lang="scss" scope>
     @import '../../style/param';
-    .banner {
+    .img-wrap {
         position: relative;
-        padding: 16.7% 0;
+        padding: 16.8% 0;
         overflow: hidden;
-        & > div {
+        .img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-        }
-        .left-arrow, .right-arrow {
-            visibility: hidden;
-            display: inline-block;
-            position: absolute;
-            top: 50%;
-            z-index: 3;
-            margin-top: -3.4rem;
-            border: 1px solid $white;
-            width: 6.8rem;
-            height: 6.8rem;
-            text-align: center;
-            color: $white;
-            opacity: 1;
-            transition: all 0.3s;
-            .iconfont {
-                font-size: 3.4rem;
-                line-height: 6.8rem;
-                font-weight: bold;
-            }
-            &:hover {
-                background: $white;
-                color: $grey;
-                opacity: 0.6;
-            }
-        }
-        .left-arrow {
-            left: 60px;
-        }
-        .right-arrow {
-            right: 60px;
-        }
-    }
-    .banner-left {
-        position: relative;
-        float: left;
-        width: 62.5%;
-        &:hover {
-            .left-arrow, .right-arrow {
-                visibility: visible;
-            }
-        }
-        .img-wrap {
-            position: relative;
-            padding: 27% 0;
-            height: 0;
-            overflow: hidden;
-            .img {
-                position: absolute;
-                width: 100%;
-                top: 0;
-            }
-            .el-carousel, .el-carousel__container {
+            .el-carousel__container {
                 height: 100%;
-            }
-            img {
-                width: 100%;
-            }
-        }
-    }
-    .banner-right {
-        position: relative;
-        float: left;
-        height: 100%;
-        width: 37.5%;
-        background-color: $blue;
-        color: $white;
-        transition: all 0.3s;
-        .content {
-            margin-left: 40px;
-            margin-top: calc(50% - 70px);
-            margin-bottom: (50%);
-            // transition: all 0.3;
-            h3 {
-                font-size: 1.4rem;
-                font-weight: normal;
-                color: $yellow;
-                margin: 0;
-                transition: all 0.3s;
-            }
-            h4 {
-                color: $white;
-                font-weight: normal;
-                line-height: 1.5;
-                font-size: 2.4rem;
-                margin: 0;
-                margin-bottom: 1.2rem;
-            }
-            p {
-                color: $white;
-            }
-        }
-        .bottom {
-            position: absolute;
-            left: 40px;
-            bottom: 40px;
-        }
-        .count {
-            display: inline-block;
-            margin-top: 5px;
-            width: 1rem;
-            text-align: center;
-            transition: all 0.3s;
-            & + span {
-                margin: 0 10px;
-            }
-        }
-        .dot {
-            transition: all 0.3s;
-        }
-    }
-    .count-wrap {
-        width: 90px;
-    }
-    .bg-6 {
-        background: #d5472f;
-        .count, .content h3 {
-            color: #ffca13;
-        }
-        .dot.active {
-            background: #ffca13;
-        }
-    }
-    .bg-5 {
-        background: #00a867;
-        .count, .content h3 {
-            color: #ffe41e;
-        }
-        .dot.active {
-            background: #ffe41e;
-        }
-    }
-    .bg-4 {
-        background: #5f1dc9;
-        .count, .content h3 {
-            color: #fed751;
-        }
-        .dot.active {
-            background: #fed751;
-        }
-    }
-    .bg-3 {
-        background: #0c2fc5;
-        .count, .content h3 {
-            color: #ffca13;
-        }
-        .dot.active {
-            background: #ffca13;
-        }
-    }
-    .bg-2 {
-        background: #127cac;
-        .count, .content h3 {
-            color: #49c7ff;
-        }
-        .dot.active {
-            background: #49c7ff;
-        }
-    }
-    .bg-1 {
-        background: #004bb9;
-        .count, .content h3 {
-            color: #64b4ff;
-        }
-        .dot.active {
-            background: #64b4ff;
-        }
-    }
-    .move-enter, .move-leave-to {
-        opacity: 0;
-        left: 80px;
-    }
-    .move-enter-to, .move-leave {
-        opacity: 1;
-        left: 0;
-    }
-    .move-enter-active {
-        position: relative;
-        transition: all 1s;
-    }
-
-    @media only screen and (max-width: 768px) {
-        .banner {
-            padding: 45% 0;
-            & > div {
-                
-            }
-            .banner-left {
-                width: 100%;
-                height: 59.3%;
-                overflow: hidden;
-                .left-arrow, .right-arrow {
-                    display: none;
-                }
-            }
-            .banner-right {
-                width: 100%;
-                height: 40.7%;
-                text-align: center;
-                .content {
-                    position: relative;
-                    top: 15%;
-                    margin-left: 0;
-                    margin-top: 0;
-                    margin-bottom: 0;
-                    // transition: all 0.3;
-                    h3 {
-                        font-size: 1.2rem;
-                    }
-                    h4 {
-                        margin-bottom: 0.5rem;
-                        font-size: 1.8rem;
-                    }
-                    p {
-                        
-                    }
-                }
-                .bottom {
-                    left: 0;
-                    bottom: 15%;
+                img {
                     width: 100%;
-                    .flex-middle {
-                        justify-content: center;
-                    }
+                    height: auto;
                 }
             }
-            .count-wrap {
-                display: none;
-            }
         }
+    }
+    
+    @media only screen and (max-width: 768px) {
+        
     }
     @media only screen and (min-width: 768px) {
 
@@ -368,17 +62,6 @@ export default {
 
     }
     @media only screen and (min-width: 1200px) {
-        .banner .left-arrow {
-            left: 80px;
-        }
-        .banner .right-arrow {
-            right: 80px;
-        }
-        .banner-right .content {
-            margin-left: 80px;
-        }
-        .banner-right .bottom {
-            left: 80px;
-        }
+        
     }
 </style>

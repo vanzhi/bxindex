@@ -296,7 +296,7 @@
     font-size: 1.4rem;
     line-height: 1.7;
     margin-right: 25%;
-    min-width: 800px;
+    min-width: 700px;
     // background: $white;
     p {
         margin: 3.7% 0;

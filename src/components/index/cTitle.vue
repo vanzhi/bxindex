@@ -61,10 +61,10 @@ export default {
 }
 @media only screen and (min-width: 1200px) {
     .title-view {
-        margin: 80px 0;
+        margin: 60px 0;  // 80
         h2 {
             font-size: 4.8rem;
-            margin-bottom: 30px;
+            margin-bottom: 20px;    // 30
             &.eng {
                 font-size: 2.4rem;
             }
