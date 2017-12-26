@@ -22,7 +22,7 @@ export default {
                 content: '公司拥有完整的制造企业信息化和城市智能化领域的系列产品和解决方案，培育、积累、形成了基于钢铁行业的三全服务能力。'
             }, {
                 title: '强大的综合集成能力',
-                content: '公司拥有强大的系统集成、数据集成能力，可集成所有主流的系统、产品和技术；集信息化、自动化和机电一体化于一身，具备完整的技术链和 QHSEI、CMMI的集成服务能力。'
+                content: '公司拥有强大的系统集成、数据集成能力，可集成主流的系统、产品和技术；集信息化、自动化和机电一体化于一身，具备完整的技术链和 QHSEI、CMMI的集成服务能力。'
             }, {
                 title: '高效稳定的过程管理能力',
                 content: '基于健全、完善的管理体系，如 ISO9001、ISO20000、ISO14001等，公司兼具管理系统化和规范化，运营管控能力强、效率高。'
@@ -106,17 +106,17 @@ export default {
     position: relative;
     margin-left: -50px;
     transition: left 0.3s;
-    // text-align: center;
+    text-align: center;
     li {
         display: inline-block;
         margin: 1px;
         padding: 50px;
-        width: 368px;
+        width: 350px;
         white-space: normal;
         cursor: pointer;
         transition: all 0.3s;
         vertical-align: top;
-        height: 450px;
+        height: 470px;
         text-align: left;
         h3 {
             font-size: 2.4rem;

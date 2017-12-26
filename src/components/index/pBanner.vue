@@ -53,7 +53,9 @@ export default {
     }
     
     @media only screen and (max-width: 768px) {
-        
+        .el-carousel__button {
+            width: 10px;
+        }
     }
     @media only screen and (min-width: 768px) {
 

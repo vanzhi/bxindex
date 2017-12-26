@@ -1,6 +1,8 @@
 <template>
     <div class="map-wrap">
-        <img :src="map">
+        <a href="/article/45" target="_blank">
+            <img :src="map">
+        </a>
     </div>
 </template>
 <script>
