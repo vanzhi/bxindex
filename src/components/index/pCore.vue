@@ -110,13 +110,13 @@ export default {
     li {
         display: inline-block;
         margin: 1px;
-        padding: 50px;
+        padding: 40px;
         width: 350px;
         white-space: normal;
         cursor: pointer;
         transition: all 0.3s;
         vertical-align: top;
-        height: 470px;
+        height: 450px;
         text-align: left;
         h3 {
             font-size: 2.4rem;
