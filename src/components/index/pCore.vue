@@ -69,15 +69,15 @@ export default {
             background-image: url(../../svg/22.svg);
         }
     }
+    // &.icon-core-3 {
+    //     height: 85px;
+    //     width: 85px;
+    //     background-image: url(../../svg/3.svg);
+    //     .core-list li:hover & {
+    //         background-image: url(../../svg/33.svg);
+    //     }
+    // }
     &.icon-core-3 {
-        height: 85px;
-        width: 85px;
-        background-image: url(../../svg/3.svg);
-        .core-list li:hover & {
-            background-image: url(../../svg/33.svg);
-        }
-    }
-    &.icon-core-4 {
         height: 96px;
         width: 83px;
         background-image: url(../../svg/4.svg);
@@ -85,7 +85,7 @@ export default {
             background-image: url(../../svg/44.svg);
         }
     }
-    &.icon-core-5 {
+    &.icon-core-4 {
         height: 77px;
         width: 94px;
         background-image: url(../../svg/5.svg);
