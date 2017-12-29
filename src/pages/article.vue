@@ -275,7 +275,7 @@
         }
     }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../style/param.scss';
 .article-wrap {
     position: relative;
@@ -284,9 +284,6 @@
     vertical-align: top;
     width: calc(100% - 360px);
     min-height: 600px;
-}
-.article-header {
-    
 }
 .article-main {
     margin-top: 3.6%;
@@ -297,16 +294,15 @@
     line-height: 1.7;
     margin-right: 25%;
     min-width: 700px;
-    // background: $white;
     p {
         margin: 3.7% 0;
     }
     img {
         width: 100%;
+        height: auto;
     }
 }
 .article-list {
-    // margin-right: 25%;
     width: 965px;
     & > .fn-clear {
         padding-top: 20px;
@@ -360,9 +356,6 @@
     .article-subtitle {
         font-size: 1.2rem;
     }
-    .article-header {
-        
-    }
     .article-menu-name {
         display: block;
         margin-bottom: 5px;
@@ -380,7 +373,9 @@
         min-width: initial;
         margin-right: 0;
         img {
+            display: inline-block;
             width: 100%;
+            height: auto;
         }
     }
     .article-list {

@@ -1,7 +1,7 @@
 <template>
     <section class="section-wrap">
         <c-title title="核心能力" engTitle="Core Competence"></c-title>
-        <ul class="core-list" :style="{left: -left + 'px'}">
+        <ul class="core-list">
             <li v-for="(item, index) in coreList" :key="index">
                 <div class="core-logo"><i :class="'ic icon-core-' + (index + 1)"></i></div><div class="core-content">
                     <h3>{{item.title}}</h3>
@@ -16,7 +16,6 @@ import cTitle from './cTitle'
 export default {
     data() {
         return {
-            left: 0,
             coreList: [{
                 title: '完善的基础业务构建能力',
                 content: '公司拥有完整的制造企业信息化和城市智能化领域的系列产品和解决方案，培育、积累、形成了基于钢铁行业的三全服务能力。'
@@ -104,7 +103,7 @@ export default {
 }
 .core-list {
     position: relative;
-    margin-left: -50px;
+    margin: 0 auto;
     transition: left 0.3s;
     text-align: center;
     li {
@@ -116,7 +115,7 @@ export default {
         cursor: pointer;
         transition: all 0.3s;
         vertical-align: top;
-        height: 450px;
+        height: 440px;
         text-align: left;
         h3 {
             font-size: 2.4rem;
@@ -184,15 +183,19 @@ export default {
     }
 }
 @media only screen and (min-width: 768px) {
-    
-}
-@media only screen and (min-width: 992px) {
-    
-}   
+    .core-list {
+        left: -60px;
+        width: 1060px;
+    }
+}  
 @media only screen and (min-width: 1200px) {
-    
+    .core-list {
+        left: -80px;
+    }
 }
-@media only screen and (min-width: 1800px) {
-    
+@media only screen and (min-width: 1860px) {
+    .core-list {
+        width: auto;
+    }
 }
 </style>

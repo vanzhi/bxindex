@@ -31,7 +31,7 @@ AMap.initAMapApiLoader({
 
 router.afterEach((to, from) => {
   // ...
-  window.screenTop = 0
+  window.scrollTop = 0
 })
 
 Vue.config.productionTip = false
