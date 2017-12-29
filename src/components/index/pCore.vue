@@ -17,20 +17,20 @@ export default {
     data() {
         return {
             coreList: [{
-                title: '完善的基础业务构建能力',
-                content: '公司拥有完整的制造企业信息化和城市智能化领域的系列产品和解决方案，培育、积累、形成了基于钢铁行业的三全服务能力。'
+                title: '完善的业务构建能力',
+                content: '公司长期致力于智慧制造和智慧城市建设，通过持续的知识沉淀和技术积累，拥有完整的工业软件和城市智能化领域的解决方案，逐步形成了以“全层次、全流程、全生命周期”为特征的业务构建能力。'
             }, {
                 title: '强大的综合集成能力',
-                content: '公司拥有强大的系统集成、数据集成能力，可集成主流的系统、产品和技术；集信息化、自动化和机电一体化于一身，具备完整的技术链和 QHSEI、CMMI的集成服务能力。'
+                content: '公司拥有强大的系统集成、应用集成、数据集成和项目管理能力，基于健全的管理体系，可集成信息化、自动化和智能化领域主流的技术、产品和系统，具备完整的专业技术链，能提供三化一体的集成服务能力，项目管理规范稳定。'
             }, {
-                title: '高效稳定的过程管理能力',
-                content: '基于健全、完善的管理体系，如 ISO9001、ISO20000、ISO14001等，公司兼具管理系统化和规范化，运营管控能力强、效率高。'
+            //     title: '高效稳定的过程管理能力',
+            //     content: '基于健全、完善的管理体系，如 ISO9001、ISO20000、ISO14001等，公司兼具管理系统化和规范化，运营管控能力强、效率高。'
+            // }, {
+                title: '持续的技术创新能力',
+                content: '公司紧随IT行业发展潮流，坚持技术创新，在云计算、移动互联、大数据、无人化等新兴领域不断突破，结合行业应用，丰富业务内涵，形成了研发与应用紧密结合的能力，充分展现产品、技术与服务的竞争力。'
             }, {
-                title: '新技术、新产品研发与应用能力',
-                content: '公司通过云计算、移动互联、大数据、无人化等增量业务的发展和落地，形成了完整的技术和运营服务能力；IDC 领域业务稳健增长，云计算业务模式日趋成熟稳定；新产品研发方面不断取得进展，部分产品突破国外技术垄断，填补国内空白。'
-            }, {
-                title: '助力中国传统产业“两化”深度融合能力',
-                content: '凭借两化融合领域的深厚积累，公司积极探索构建智能工厂和智慧制造，所策划践行的工业 4.0 解决方案、工业机器人、无人化物流管控等产品陆续投入应用，不断提升中国制造企业转型升级的服务能力，继续保持了工业软件相关领域的领军地位。'
+                title: '“两化”的深度融合能力',
+                content: '公司凭借两化融合领域的深厚积累，积极探索构建智能工厂和智慧制造，策划践行工业 4.0 解决方案、工业机器人、无人化物流管控等产品，不断助力中国制造企业转型升级，持续保持工业软件的领军地位。'
             }],
         }
     },
@@ -105,23 +105,22 @@ export default {
     position: relative;
     margin: 0 auto;
     transition: left 0.3s;
-    text-align: center;
     li {
         display: inline-block;
         margin: 1px;
         padding: 40px;
-        width: 350px;
+        width: calc(25% - 10px);
         white-space: normal;
         cursor: pointer;
         transition: all 0.3s;
         vertical-align: top;
-        height: 440px;
+        height: 410px;
         text-align: left;
         h3 {
             font-size: 2.4rem;
             font-weight: normal;
             transition: color 0.3s;
-            min-height: 60px;
+            min-height: 30px;
         }
         p {
             margin-top: 20px;
@@ -182,20 +181,19 @@ export default {
         }
     }
 }
-@media only screen and (min-width: 768px) {
-    .core-list {
-        left: -60px;
-        width: 1060px;
+@media only screen and (min-width: 768px) and (max-width: 1420px) {
+    .core-list li {
+        width: calc(50% - 20px);
+        height: 360px;
+        h3 {
+            text-align: center;
+        }
     }
 }  
-@media only screen and (min-width: 1200px) {
-    .core-list {
-        left: -80px;
-    }
+@media only screen and (min-width: 1330px) {
+    
 }
 @media only screen and (min-width: 1860px) {
-    .core-list {
-        width: auto;
-    }
+    
 }
 </style>
