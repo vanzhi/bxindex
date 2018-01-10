@@ -7,8 +7,15 @@
             <span>COPYRIGHT</span>
             <span>©2017</span>
             <span>上海宝信软件股份有限公司</span>
-            <span>沪ICP备 10001471 号</span>
-            <span>沪公网安备 31011302002903 号</span>
+            <span>
+                <a href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action" target="_blank">沪ICP备 10001471 号</a>
+            </span>
+            <span>
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011302002903" target="_blank">
+                    <img :src="bakIcon" class="bak-icon">
+                    <span class="bak-text">沪公网安备 31011302002903 号</span>
+                </a>
+            </span>
             <div class="fn-right right-wrap">
                 <router-link to="/article/53/55" tag="span">网站地图</router-link>
                 <i class="iconfont icon-sjup"></i>
@@ -22,7 +29,14 @@
     </footer>
 </template>
 <script>
+import bakIcon from '@/images/bak_icon.png';
+
 export default {
+    data() {
+        return {
+            bakIcon
+        }
+    },
     props: {
         
     },
@@ -46,7 +60,7 @@ footer {
     color: $white;
     line-height: 1.8;
     font-weight: normal;
-    span {
+    & > div > span {
         margin-right: 10px;
     }
 }
@@ -65,6 +79,13 @@ footer {
             }
         }
     }
+}
+.bak-icon, bak-text {
+    display: inline-block;
+    vertical-align: sub;
+}
+.bak-icon {
+    margin-right: 1px;
 }
 .right-wrap {
     span {

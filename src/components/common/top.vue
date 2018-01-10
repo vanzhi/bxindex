@@ -16,7 +16,7 @@
                             <span class="fn-mr-50">0.32%</span>
                             -->
                             <span class="fn-mr-5">客服热线</span>
-                            <span class="fn-mr-5">800-820-0020</span>
+                            <span class="fn-mr-5">800-820-0220</span>
                             <span class="fn-mr-10">400-821-0860</span>
                             <router-link to="/article/45" class="fn-mr-10 fn-blue">{{aboutUs.nodeName}}</router-link>
                             <a target="_blank" href="//en.baosight.com/" class="lang">EN</a>
