@@ -1,11 +1,11 @@
 <template>
     <div>
         <p-banner></p-banner>
-        <p-news></p-news>
         <p-core></p-core>
-        <p-video></p-video>
         <p-books></p-books>
-        <p-map></p-map>
+        <p-news></p-news>
+        <p-video></p-video>
+        <!-- <p-map></p-map> -->
         <!-- <div class="back-top"><i class="iconfont icon-uparrow"></i></div> -->
     </div>
 </template>

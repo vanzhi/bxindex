@@ -22,7 +22,14 @@
                             <a target="_blank" href="//en.baosight.com/" class="lang">EN</a>
                         </div>
                         <div class="right">
-                            <router-link to="/article/41/44"><i class="iconfont icon-weixin"></i></router-link>
+                            <el-popover
+                                ref="weixin"
+                                placement="bottom"
+                                width="260"
+                                trigger="hover">
+                                <img class="weixin-img" :src="weixinImg" alt="" />
+                            </el-popover>
+                            <router-link to="/article/41/44"><i v-popover:weixin class="iconfont icon-weixin"></i></router-link>
                         </div>
                     </div>
                 </li>
@@ -61,7 +68,8 @@
 <script>
 import {mapGetters} from 'vuex'
 import bigLogo from '@/images/baoxing_biglogo.png'
-import textImg from '@/images/slogan.png'
+import textImg from '@/images/slogan2.png'
+import weixinImg from '@/images/qrcode1.png'
 import Scroll from '@/directives/scroll'
 export default {
     data() {
@@ -72,6 +80,7 @@ export default {
             menuPathName: ['major', 'trade', 'about', 'investor', 'join', 'media'],
             searchText: '',
             textImg,
+            weixinImg,
             bigLogo
         }
     },
@@ -138,6 +147,13 @@ export default {
 <!-- head -->
 <style lang="scss">
     @import '../../style/param.scss';
+    .weixin-img {
+        width: 100%;
+        height: auto;
+    }
+    .icon-weixin {
+        color: #50b674;
+    }
     .head-main {
         transition: all 0.3s;
         * {
@@ -170,7 +186,7 @@ export default {
                 border-bottom: 1px solid $grey1;
                 .info1 {
                     float: left;
-                    display: none;
+                    /*display: none;*/
                 }
                 .info2 {
                     .left {
