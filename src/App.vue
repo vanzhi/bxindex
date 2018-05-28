@@ -45,10 +45,10 @@ export default {
     overflow: hidden;
     width: 100%;
     min-width: 1080px;
-    padding-top: 144px;
+    padding-top: 120px;
     transition: all 0.5s;
     &.open {
-        padding-top: 294px;
+        padding-top: 270px;
     }
 }
 

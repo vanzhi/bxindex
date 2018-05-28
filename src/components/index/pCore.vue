@@ -17,20 +17,20 @@ export default {
     data() {
         return {
             coreList: [{
-                title: '完善的业务构建能力',
-                content: '公司长期致力于智慧制造和智慧城市建设，通过持续的知识沉淀和技术积累，拥有完整的工业软件和城市智能化领域的解决方案，逐步形成了以“全层次、全流程、全生命周期”为特征的业务构建能力。'
+                title: '“两化”的深度融合能力',
+                content: '公司凭借两化融合领域的深厚积累，积极探索并策划践行智慧制造解决方案，助力中国制造企业转型升级，持续保持工业软件领军地位。'
             }, {
-                title: '强大的综合集成能力',
-                content: '公司拥有强大的系统集成、应用集成、数据集成和项目管理能力，基于健全的管理体系，可集成信息化、自动化和智能化领域主流的技术、产品和系统，具备完整的专业技术链，能提供三化一体的集成服务能力，项目管理规范稳定。'
+                title: '持续的技术创新能力',
+                content: '公司紧随IT行业发展潮流，坚持技术创新，在云计算、大数据、工业互联网等新兴领域不断突破，形成了研发与应用紧密结合的能力。'
             }, {
             //     title: '高效稳定的过程管理能力',
             //     content: '基于健全、完善的管理体系，如 ISO9001、ISO20000、ISO14001等，公司兼具管理系统化和规范化，运营管控能力强、效率高。'
             // }, {
-                title: '持续的技术创新能力',
-                content: '公司紧随IT行业发展潮流，坚持技术创新，在云计算、移动互联、大数据、无人化等新兴领域不断突破，结合行业应用，丰富业务内涵，形成了研发与应用紧密结合的能力，充分展现产品、技术与服务的竞争力。'
+                title: '强大的综合集成能力',
+                content: '公司拥有强大的系统集成、应用集成、数据集成和项目管理能力，基于健全的管理体系提供三化一体的集成服务，项目管理规范稳定。'
             }, {
-                title: '“两化”的深度融合能力',
-                content: '公司凭借两化融合领域的深厚积累，积极探索构建智能工厂和智慧制造，策划践行工业 4.0 解决方案、工业机器人、无人化物流管控等产品，不断助力中国制造企业转型升级，持续保持工业软件的领军地位。'
+                title: '完善的业务构建能力',
+                content: '公司长期致力于智慧制造和智慧城市建设，拥有各领域完整解决方案，形成了“全层次、全流程、全生命周期”为特征的业务构建能力。'
             }],
         }
     },
@@ -114,17 +114,18 @@ export default {
         cursor: pointer;
         transition: all 0.3s;
         vertical-align: top;
-        height: 410px;
+        height: 390px;
         text-align: left;
         h3 {
-            font-size: 2.4rem;
+            font-size: 1.8rem;
             font-weight: normal;
             transition: color 0.3s;
             min-height: 30px;
         }
         p {
-            margin-top: 20px;
+            margin-top: 10px;
             line-height: 1.5;
+            font-size: 1.4rem;
         }
         &:hover {
             box-shadow: 0 0 0 1px $blue;
@@ -183,8 +184,8 @@ export default {
 }
 @media only screen and (min-width: 768px) and (max-width: 1420px) {
     .core-list li {
-        width: calc(50% - 20px);
-        height: 360px;
+        // width: calc(50% - 20px);
+        // height: 360px;
         h3 {
             text-align: center;
         }

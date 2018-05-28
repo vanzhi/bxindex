@@ -4,7 +4,7 @@
         <c-title title="最新资讯" engTitle="News"></c-title>
         <div class="list-wrap">
             <ul class="info-list">
-                <Content-List :currentNode="secondLevelMenuListById[42]" v-for="(item, index) in newsList" :item="item" :key="index"></Content-List>
+                <Content-List :currentNode="secondLevelMenuListById[42]" v-for="(item, index) in newsList" v-if="index < 3" :item="item" :key="index"></Content-List>
                 <router-link tag="li" to="/article/41/42" class="last">
                     <div class="content">
                         <p>

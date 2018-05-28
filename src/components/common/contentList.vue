@@ -6,13 +6,14 @@
             </div>
             <div class="part right">
                 <div>
-                    <span class="label-primary">{{currentNode.nodeName}}</span>
+                    <!-- <span class="label-primary">{{currentNode.nodeName}}</span> -->
+                    <span class="label-primary">{{item.addDate.split(' ')[0].replace(/\-+/g, '.')}}</span> 
                     <p>
                         {{item.title}}
                     </p>
-                    <span class="time">
+                    <!-- <span class="time">
                         {{item.addDate.split(' ')[0].replace(/\-+/g, '.')}}
-                    </span>
+                    </span> -->
                 </div>
             </div>
         </div>

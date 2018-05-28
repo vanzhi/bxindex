@@ -22,6 +22,7 @@ export default {
 @import '../../style/index.scss';
 .title-view {
     margin: 40px 0;
+    text-align: center;
     h2 {
         color: $blue;
         font-size: 3.6rem;
@@ -36,6 +37,7 @@ export default {
 @media only screen and (max-width: 768px) {
     .title-view {
         margin: 30px 0;
+        text-align: left;
         h2 {
             font-size: 1.68rem;
             margin-bottom: 8px;
@@ -61,13 +63,13 @@ export default {
 }
 @media only screen and (min-width: 1200px) {
     .title-view {
-        margin: 60px 0;  // 80
+        // margin: 60px 0;  // 80
         h2 {
-            font-size: 4.8rem;
-            margin-bottom: 20px;    // 30
-            &.eng {
-                font-size: 2.4rem;
-            }
+            // font-size: 4.8rem;
+            // margin-bottom: 20px;    // 30
+            // &.eng {
+            //     font-size: 2.4rem;
+            // }
         }
     }
 }

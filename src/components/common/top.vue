@@ -165,7 +165,7 @@ export default {
         top: 0;
         left: 0;
         width: 100%;
-        height: 144px;
+        height: 120px;
         padding: 0 60px;
         z-index: 99;
         background: $bgcolor;
@@ -173,20 +173,19 @@ export default {
         .logo {
             position: absolute;
             display: inline-block;
-            top: 40px;
+            top: 28px;
             left: 60px;
         }
         .nav {
             margin-left: 294px;
             position: relative;
             .li1 {
-                margin-top: 38px;
-                padding-bottom: 16px;
-                margin-bottom: 16px;
+                margin-top: 28px;
+                padding-bottom: 12px;
+                margin-bottom: 12px;
                 border-bottom: 1px solid $grey1;
                 .info1 {
-                    float: left;
-                    /*display: none;*/
+                    display: none;
                 }
                 .info2 {
                     .left {
@@ -243,7 +242,7 @@ export default {
     .search-wrap {
         position: fixed;
         width: 100%;
-        top: 144px;
+        top: 120px;
         z-index: 99;
         background: $bgcolor;
         height: 0;
@@ -416,6 +415,7 @@ export default {
             .nav {
                 .li1 {
                     .info1 {
+                        float: left;
                         display: block;
                     }
                 }
