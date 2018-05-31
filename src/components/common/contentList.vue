@@ -8,7 +8,7 @@
                 <div>
                     <!-- <span class="label-primary">{{currentNode.nodeName}}</span> -->
                     <span class="label-primary">{{item.addDate.split(' ')[0].replace(/\-+/g, '.')}}</span> 
-                    <p>
+                    <p class="fn-clamp-2">
                         {{item.title}}
                     </p>
                     <!-- <span class="time">
@@ -78,7 +78,7 @@ export default {
         float: left;
         width: 50%;
         position: relative;
-        padding: 16.5% 0;
+        padding: 14% 0;
         overflow: hidden;
         font-family: $fontlight;
         color: $blue;
@@ -94,7 +94,7 @@ export default {
             top: 0;
             left: 0;
         }
-        p {
+        .p {
             font-size: 1.4rem;
         }
         img {
@@ -111,7 +111,7 @@ export default {
                 & > div {
                     padding: 6%;
                 }
-                p {
+                .p {
                     margin: 2% 0;
                     font-size: 1.4rem;
                 }
@@ -127,7 +127,7 @@ export default {
             margin-bottom: 0;
         }
         .part {
-            p {
+            .p {
                 margin-bottom: 0;
                 min-height: 50px;
             }
@@ -142,14 +142,14 @@ export default {
     }
     @media only screen and (min-width: 1200px) {
         .part.right {
-            p {
+            .p {
                 font-size: 1.4rem;
             }
         }
     }
     @media only screen and (min-width: 1800px){
         .part.right {
-            p {
+            .p {
                 font-size: 1.8rem;
                 margin-bottom: 16px;
                 min-height: initial;

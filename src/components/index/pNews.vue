@@ -23,13 +23,13 @@
                         </div>
                         <div class="part right">
                             <div>
-                                <span class="label-primary">公司新闻</span>
-                                <p>
+                                <span class="label-primary">{{item.addDate.split(' ')[0].replace(/\-+/g, '.')}}</span>
+                                <div class="p fn-clamp-2">
                                     {{item.title}}
-                                </p>
-                                <span class="time">
-                                    {{item.addDate.split(' ')[0].replace(/\-+/g, '.')}}
-                                </span>
+                                </div>
+                                <!-- <span class="time">
+                                    
+                                </span> -->
                             </div>
                         </div>
                     </router-link>
@@ -147,7 +147,7 @@ export default {
         }
         .content {
             position: relative;
-            padding: 16.5% 0;
+            padding: 14% 0;
         }
         .content > * {
             position: absolute;
@@ -189,7 +189,7 @@ export default {
             top: 0;
             left: 0;
         }
-        p {
+        .p {
             font-size: 1.6rem;
         }
         img {
@@ -200,7 +200,7 @@ export default {
 .info-list-move {
     display: none;
     position: relative;
-    padding: 20.5% 0;
+    padding: 16% 0;
     & > .el-carousel__container {
         position: absolute;
         height: 100%;
@@ -217,7 +217,7 @@ export default {
             float: left;
             width: 50%;
             position: relative;
-            padding: 20.5% 0;
+            padding: 16% 0;
             overflow: hidden;
             font-family: $fontlight;
             color: $blue;
@@ -234,7 +234,8 @@ export default {
                 top: 0;
                 left: 0;
             }
-            p {
+            .p {
+                margin-top: 15px;
                 font-size: 1.2rem;
             }
             img {
@@ -254,7 +255,7 @@ export default {
         }
         .content {
             position: relative;
-            padding: 20.5% 0;
+            padding: 16% 0;
         }
         .content > * {
             position: absolute;
@@ -304,11 +305,11 @@ export default {
         }
         .last {
             .content {
-                padding: 20.5% 0;
+                padding: 16% 0;
             }
         }
         .part {
-            padding: 20.5% 0;
+            padding: 16% 0;
         }
         .item .whole:hover {
             transform: none;
@@ -326,7 +327,7 @@ export default {
         }
         .part.right {
             font-size: 1.2rem;
-            p {
+            .p {
                 font-size: 1.44rem;
             }
         }
@@ -344,7 +345,7 @@ export default {
 @media only screen and (min-width: 1200px) {
     .info-list {
         .part.right {
-            p {
+            .p {
                 font-size: 2.0rem;
             }
         }
@@ -353,7 +354,7 @@ export default {
 @media only screen and (min-width: 1800px) {
     .info-list {
         .part.right {
-            p {
+            .p {
                 font-size: 2.4rem;
             }
             & > div {
