@@ -10,7 +10,7 @@
     </div>
 </template>
 <script>
-import pBanner from '@/components/index/pBanner'
+import pBanner from '@/components/index/pBanner.old'
 import pCore from '@/components/index/pCore'
 import pNews from '@/components/index/pNews'
 import pVideo from '@/components/index/pVideo'

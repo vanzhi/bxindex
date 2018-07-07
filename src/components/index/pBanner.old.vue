@@ -23,10 +23,18 @@
                     <template v-for="(s, i) in sliders">
                         <transition name="move" :key="i">
                             <div class="content" v-show="activeIndex === i">
-                                <h4 v-if="s.desc" class="fn-ff-light desc">{{s.desc}}</h4>
-                                <h4 v-if="s.intro" class="fn-ff-light">{{s.intro}}</h4>
-                                <p  v-if="s.content">{{s.content}}</p>
-                                <h3 v-if="s.title" class="title">{{s.title}}</h3>
+                                <!-- 兼容xxxxxxxx需求 -->
+                                <h4 v-if="s.desc" class="fn-ff-light desc">
+                                    {{s.desc}}
+                                </h4>
+                                <template v-if="(s.title instanceof Array)">
+                                    <h3 v-for="(item, index) in s.title" :key="index" class="fn-ff-light desc">
+                                        {{item}}<br/>
+                                    </h3>
+                                </template>
+                                <h3 v-else-if="s.title" class="title">{{s.title}}</h3>
+                                <h4 v-if="s.subDesc" class="fn-ff-light desc">{{s.subDesc}}</h4>
+                                <h3 v-if="s.subTitle" class="title">{{s.subTitle}}</h3>
                             </div>
                         </transition>
                     </template>
@@ -48,10 +56,10 @@
     </section>
 </template>
 <script>
-import slider1 from '@/images/1.jpg'
-import slider2 from '@/images/2.jpg'
-import slider3 from '@/images/3.jpg'
-import slider4 from '@/images/4.jpg'
+import slider1 from '@/images/b1.jpg'
+import slider2 from '@/images/b2.jpg'
+import slider3 from '@/images/b3.jpg'
+import slider4 from '@/images/b4.jpg'
 import slider5 from '@/images/5.jpg'
 import slider6 from '@/images/6.jpg'
 export default {
@@ -59,47 +67,27 @@ export default {
         return {
             autoPlayed : true,
             sliders : [{
-                title   : '愿景｜使命｜核心价值',
-                desc    : '企业文化',
-                // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
-                // content : '内容信息',
+                desc    : '愿景',
+                title   : ['智慧制造的领先者', '智慧城市的创新者', '员工与企业共同发展的示范者'],
+                subDesc : '使命',
+                subTitle: '让中国制造和城市生活更智慧',
                 imgurl  : slider1,
                 class   : 'bg-1'
             }, {
-                title   : '稳定盈利｜备受尊敬',
-                desc    : '打造一个智慧服务企业',
-                // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
-                // content : '内容信息',
+                desc    : '核心价值',
+                title   : '诚信，协同，创新，共赢',
                 imgurl  : slider2,
                 class   : 'bg-2'
             }, {
-                title   : '智慧制造｜智慧城市',
-                desc    : '聚焦两个核心业务',
-                // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
-                // content : '内容信息',
+                desc    : '智慧制造',
+                title   : '以智慧制造提升企业竞争能力',
                 imgurl  : slider3,
                 class   : 'bg-3'
             }, {
-                title   : '云计算服务｜工业大数据｜金融软件 + 服务',
-                desc    : '培育三个新的业务方向',
-                // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
-                // content : '内容信息',
+                desc    : '智慧城市',
+                title   : '以智慧城市创造社会美好生活',
                 imgurl  : slider4,
                 class   : 'bg-4'
-            }, {
-                title   : 'IDC｜无人化｜物联网｜智能交通',
-                desc    : '发展四个战略业务',
-                // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
-                // content : '内容信息',
-                imgurl  : slider5,
-                class   : 'bg-5'
-            }, {
-                title   : '信息化｜自动化｜信息服务｜智能化｜机电一体化',
-                desc    : '优化构成核心竞争力的五大传统业务',
-                // intro   : '（云计算服务、工业大数据、金融软件和金融服务）',
-                // content : '内容信息',
-                imgurl  : slider6,
-                class   : 'bg-6'
             }],
             activeIndex : 0
         }
@@ -199,26 +187,34 @@ export default {
         color: $white;
         transition: all 0.3s;
         .content {
+            position: relative;
+            top: -8%;           // xxxx
+            height: 100%;
             margin-left: 40px;
-            margin-top: calc(50% - 70px);
-            margin-bottom: (50%);
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
             // transition: all 0.3;
             h3 {
+                width: 100%;
                 font-size: 1.4rem;
                 font-weight: normal;
                 color: $yellow;
                 margin: 0;
+                margin-bottom: 1rem;        // 2
                 transition: all 0.3s;
             }
             h4 {
+                width: 100%;
                 color: $white;
                 font-weight: normal;
                 line-height: 1.5;
                 font-size: 2.4rem;
                 margin: 0;
-                margin-bottom: 1.2rem;
+                margin-bottom: 1rem;        // 1.2
             }
             p {
+                width: 100%;
                 color: $white;
             }
         }
@@ -263,7 +259,7 @@ export default {
         }
     }
     .bg-4 {
-        background: #5f1dc9;
+        background: #4A5876;
         .count, .content h3 {
             color: #fed751;
         }
@@ -272,7 +268,7 @@ export default {
         }
     }
     .bg-3 {
-        background: #0c2fc5;
+        background: #125E98;
         .count, .content h3 {
             color: #ffca13;
         }
@@ -281,7 +277,7 @@ export default {
         }
     }
     .bg-2 {
-        background: #127cac;
+        background: #02368C;
         .count, .content h3 {
             color: #49c7ff;
         }
@@ -290,7 +286,7 @@ export default {
         }
     }
     .bg-1 {
-        background: #004bb9;
+        background: #176278;
         .count, .content h3 {
             color: #64b4ff;
         }
@@ -313,13 +309,15 @@ export default {
 
     @media only screen and (max-width: 768px) {
         .banner {
-            padding: 45% 0;
+            // padding: 45% 0;
+            padding: 83% 0; // 兼容xxxxx需求
             & > div {
                 
             }
             .banner-left {
                 width: 100%;
-                height: 59.3%;
+                // height: 59.3%;
+                height: 32%; // 兼容xxxxx需求
                 overflow: hidden;
                 .left-arrow, .right-arrow {
                     display: none;
@@ -327,17 +325,19 @@ export default {
             }
             .banner-right {
                 width: 100%;
-                height: 40.7%;
+                // height: 40.7%;
+                height: 68%; // 兼容xxxxx需求
                 text-align: center;
                 .content {
                     position: relative;
-                    top: 15%;
+                    top: -8%;
                     margin-left: 0;
                     margin-top: 0;
                     margin-bottom: 0;
                     // transition: all 0.3;
                     h3 {
                         font-size: 1.2rem;
+                        margin-bottom: 1.2rem;
                     }
                     h4 {
                         margin-bottom: 0.5rem;
