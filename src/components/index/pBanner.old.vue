@@ -335,16 +335,13 @@ export default {
                     margin-top: 0;
                     margin-bottom: 0;
                     // transition: all 0.3;
-                    h3 {
-                        font-size: 1.2rem;
-                        margin-bottom: 1.2rem;
-                    }
                     h4 {
-                        margin-bottom: 0.5rem;
+                        line-height: 3rem;
                         font-size: 1.8rem;
                     }
-                    p {
-                        
+                    h3 {
+                        font-size: 1.6rem;
+                        line-height: 1.8rem;
                     }
                 }
                 .bottom {
@@ -376,6 +373,12 @@ export default {
         }
         .banner-right .content {
             margin-left: 80px;
+            h4 {
+                line-height: 4.5rem;
+            }
+            h3 {
+                font-size: 1.8rem;
+            }
         }
         .banner-right .bottom {
             left: 80px;
