@@ -18,7 +18,7 @@
                             <span class="fn-mr-5">客服热线</span>
                             <span class="fn-mr-5">800-820-0220</span>
                             <span class="fn-mr-10">400-821-0860</span>
-                            <router-link to="/article/45" class="fn-mr-10 fn-blue">{{aboutUs.nodeName}}</router-link>
+                            <router-link to="/article/7" class="fn-mr-10 fn-blue">{{aboutUs.nodeName}}</router-link>
                             <a target="_blank" href="//en.baosight.com/" class="lang">EN</a>
                         </div>
                         <div class="right">
@@ -29,7 +29,7 @@
                                 trigger="hover">
                                 <img class="weixin-img" :src="weixinImg" alt="" />
                             </el-popover>
-                            <router-link to="/article/41/44"><i v-popover:weixin class="iconfont icon-weixin"></i></router-link>
+                            <router-link to="/article/6/42"><i v-popover:weixin class="iconfont icon-weixin"></i></router-link>
                         </div>
                     </div>
                 </li>

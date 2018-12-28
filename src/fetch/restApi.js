@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const _host = '47.92.77.182'
+const _host = '47.100.251.35'
 
-const _port = '8080'
+const _port = '8888'
 
 const _protocol = ''
 

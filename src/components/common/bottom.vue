@@ -1,7 +1,7 @@
 <template>
     <footer>
         <ul class="link-list">
-            <router-link tag="li" :to="'/article/' + item.parentId + '/' + item.nodeId" v-if="item.nodeId !== 55" v-for="(item, index) in list" :key="index"><a>{{item.nodeName}}</a></router-link>
+            <router-link tag="li" :to="'/article/' + item.parentId + '/' + item.nodeId" v-if="item.nodeId !== 49" v-for="(item, index) in list" :key="index"><a>{{item.nodeName}}</a></router-link>
         </ul>
         <div>
             <span>COPYRIGHT</span>
@@ -17,7 +17,7 @@
                 </a>
             </span>
             <div class="fn-right right-wrap">
-                <router-link to="/article/53/55" tag="span">网站地图</router-link>
+                <router-link to="/article/9/49" tag="span">网站地图</router-link>
                 <i class="iconfont icon-sjup"></i>
             </div>
         </div>
@@ -42,10 +42,10 @@ export default {
     },
     computed: {
         list() {
-            if (!this.$store.getters.firstLevelMenuListById[53]) {
+            if (!this.$store.getters.firstLevelMenuListById[9]) {
                 return []
             }
-            return this.$store.getters.firstLevelMenuListById[53].childs
+            return this.$store.getters.firstLevelMenuListById[9].childs
         }
     }
 }
